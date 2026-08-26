@@ -18,6 +18,13 @@
       This page requires JavaScript to display.
     </div>
   </noscript>
+    <link rel="manifest" href="/training_plan_nms/manifest.json">
+      <meta name="theme-color" content="#0a0a0a">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+          <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+            <meta name="apple-mobile-web-app-title" content="NMS Training">
+              <link rel="apple-touch-icon" href="/training_plan_nms/logotipo-pauta.svg">
+                <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('/training_plan_nms/sw.js');}</script>
 </head>
 <body>
   <div id="__bundler_thumbnail">
@@ -61,7 +68,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
   try {
     const manifestEl = document.querySelector('script[type="__bundler/manifest"]');
-    const templateEl = document.querySelector('script[type="__bundler/template"]');
+    const templateEl = document.querySelector('script[type"__bundler/template"]');
     if (!manifestEl || !templateEl) {
       setStatus('Error: missing bundle data');
       console.error('[bundler] Missing script tags — manifestEl:', !!manifestEl, 'templateEl:', !!templateEl);
