@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
   try {
     const manifestEl = document.querySelector('script[type="__bundler/manifest"]');
-    const templateEl = document.querySelector('script[type"__bundler/template"]');
+    const templateEl = document.querySelector('script[type="__bundler/template"]');
     if (!manifestEl || !templateEl) {
       setStatus('Error: missing bundle data');
       console.error('[bundler] Missing script tags — manifestEl:', !!manifestEl, 'templateEl:', !!templateEl);
