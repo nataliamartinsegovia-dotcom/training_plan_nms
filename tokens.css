@@ -1,0 +1,105 @@
+/* ══════════════════════════════════════════════════════════════════
+   PAUTA — DESIGN TOKENS · v2
+   Fuente única de verdad. La aplicación la carga con <link>; ningún
+   archivo vuelve a duplicar estos valores (corrige B1).
+   Capas: primitiva → semántica → componente.
+   ══════════════════════════════════════════════════════════════════ */
+
+:root {
+
+  /* ═══════════ 1 · PRIMITIVA ═══════════ */
+
+  --warm-0:   #FFFFFF;
+  --warm-50:  #FAF8F5;
+  --warm-100: #F4F1EB;
+  --warm-200: #E3DED4;
+  --warm-300: #D2CCBF;
+  --warm-400: #B3AC9E;   /* solo filete y superficie: no pasa contraste */
+  --warm-500: #8A8274;   /* texto ≥ 18 px */
+  --warm-700: #6E6759;   /* etiquetas y texto pequeño · 5,4:1 */
+  --warm-800: #555047;
+  --warm-900: #17140F;
+
+  /* Tintes de señal: viven en la capa primitiva (corrige B2) */
+  --green-700: #3E5148;
+  --olive-700: #5C5340;
+  --clay-700:  #5E4340;
+
+  --font-didone: 'Bodoni Moda', 'Didot', 'Bodoni MT', Georgia, serif;
+  --font-geo:    'Jost', 'Futura', 'Century Gothic', system-ui, sans-serif;
+
+  /* Escala. La didone a 23 px o más; nunca por debajo (corrige B4) */
+  --sz-display-1: clamp(42px, 6.6vw, 88px);
+  --sz-display-2: clamp(30px, 4.2vw, 50px);
+  --sz-display-3: clamp(23px, 2.6vw, 30px);
+  --sz-figure:    clamp(26px, 3vw, 40px);
+  --sz-body:      14px;
+  --sz-body-sm:   13px;
+  --sz-label:     12px;   /* antes 11 px / peso 300 (corrige C6) */
+
+  --lh-display: 1.04;
+  --lh-figure:  1.0;
+  --lh-body:    1.76;
+
+  --tr-display: -.006em;
+  --tr-label:   .2em;
+  --tr-mark:    .34em;
+
+  --wt-label: 400;
+  --wt-text:  300;
+  --wt-max:   400;   /* regla dura: nunca por encima */
+
+  --sp-1: 4px;  --sp-2: 8px;  --sp-3: 14px; --sp-4: 22px;
+  --sp-5: 34px; --sp-6: 52px; --sp-7: 78px;
+
+  --hair: 1px;
+  --measure-max: 1440px;   /* caja de lectura (corrige E9) */
+
+
+  /* ═══════════ 2 · SEMÁNTICA ═══════════ */
+
+  --page:           var(--warm-50);
+  --surface:        var(--warm-0);
+  --surface-sunken: var(--warm-100);
+
+  --text-primary:   var(--warm-900);
+  --text-secondary: var(--warm-800);
+  --text-muted:     var(--warm-700);   /* etiquetas: pasa AA */
+  --text-faint:     var(--warm-500);   /* solo ≥ 18 px */
+
+  --line:        var(--warm-200);
+  --line-strong: var(--warm-300);
+  --line-ink:    var(--warm-900);
+
+  --signal-good: var(--green-700);
+  --signal-mid:  var(--olive-700);
+  --signal-low:  var(--clay-700);
+
+  /* Estados: el sistema ya los cubre (corrige B6) */
+  --focus-ring:   var(--line-ink);
+  --focus-width:  1px;
+  --focus-offset: 3px;
+  --select-bg:    var(--warm-200);
+  --dur-fast:     .18s;
+  --dur-slow:     .32s;
+  --z-mast:       100;
+  --z-overlay:    200;
+
+  --gutter:   clamp(18px, 3.4vw, 34px);
+  --gutter-y: var(--sp-6);
+  --radius:   0;
+
+
+  /* ═══════════ 3 · COMPONENTE ═══════════
+     Solo donde un componente necesita desviarse de la capa 2.
+     Nada de hex aquí. */
+
+  --mast-h:          62px;
+  --mast-line:       var(--line-ink);
+  --sectionbar-line: var(--line-ink);
+  --phase-week-on:   var(--text-primary);
+  --phase-week-off:  var(--line-strong);
+  --day-today-line:  var(--line-ink);
+  --field-line:      var(--line-ink);
+  --field-line-off:  var(--line-strong);
+}
