@@ -1,4 +1,4 @@
-const CACHE = 'nms-training-v1';
+const CACHE = 'nms-training-v2';
 const ASSETS = [
   '/training_plan_nms/',
     '/training_plan_nms/index.html',
