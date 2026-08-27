@@ -258,7 +258,7 @@ footer p{font-size:var(--sz-label);color:var(--muted);letter-spacing:var(--tr-la
   <p id="footer-count"></p>
 </footer>
 
-Cscript>
+<script>
 /* ── DATOS ── */
 const FASES=[
   {num:'I',  label:'Específico test',        dates:'Ago S4 → Sep S3 · 5 sem',desc:'Box lun/mié/vie fijo. Martes y sábado atacan los cuatro bloques con margen. Prioridad: burpees ritmo constante, remo técnica de piernas, WB sin romper la sentadilla.',start:'2026-08-25',end:'2026-09-27'},
@@ -472,7 +472,7 @@ function renderAgenda(ds,el){
   el.innerHTML=evts.map(e=>`
     <div class="agenda-row">
       <time>${e.hora}</time>
-      <span><span class="agenda-event">${e.nombre}</span>${e.dom?`<span class="agenda-cal">${e.dom}</span>`:''}|/span>
+      <span><span class="agenda-event">${e.nombre}</span>${e.dom?`<span class="agenda-cal">${e.dom}</span>`:''}</span>
     </div>`).join('');
 }
 
@@ -625,7 +625,7 @@ function renderPlan(){
       <div class="fase-weeks">${isA?`Semana ${wn} de ${tw}`:`${tw} semanas`}</div>
     </div>`;
   }).join('');
-  document.getElementById('timeline').innerHTML<`<div class="sec" style="margin-top:var(--sp-6)"><h2>Línea de tiempo</h2></div>${TIMELINE.map(t=>`<div class="tl-row"><span class="tl-d">${t.d}</span><span class="tl-t"${t.on?' style="font-weight:var(--wt-label)"':''}>${t.t}</span></div>`).join('')}`;
+  document.getElementById('timeline').innerHTML=`<div class="sec" style="margin-top:var(--sp-6)"><h2>Línea de tiempo</h2></div>${TIMELINE.map(t=>`<div class="tl-row"><span class="tl-d">${t.d}</span><span class="tl-t"${t.on?' style="font-weight:var(--wt-label)"':''}>${t.t}</span></div>`).join('')}`;
 }
 
 /* ── HISTORIAL ── */
