@@ -7,6 +7,7 @@
   <link rel="manifest" href="./manifest.json">
   <link rel="apple-touch-icon" href="./icon-192.png">
   <title>Pauta — Temporada 2026/27</title>
+<script>if("serviceWorker"in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("./sw.js")})}</script>
   <style
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { background: #faf9f5; display: flex; align-items: center; justify-content: center; min-height: 100vh; font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
@@ -303,7 +304,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     // (synthesizing one if the source HTML omitted it) but may carry
     // attributes through, so match the full opening tag. slice() rather than
     // replace() keeps us clear of $-pattern substitution in resourceScript.
-    const pwaInject = '<link rel="manifest" href="./manifest.json"><meta name="theme-color" content="#FAF8F5"><link rel="apple-touch-icon" href="./icon-192.png">';
+    const pwaInject = '<link rel="manifest" href="./manifest.json"><meta name="theme-color" content="#FAF8F5"><link rel="apple-touch-icon" href="./icon-192.png"><script>if("serviceWorker"in navigator){navigator.serviceWorker.register("./sw.js")}<\/script>';
     const headOpen = template.match(/<head[^>]*>/i);
     if (headOpen) {
       const i = headOpen.index + headOpen[0].length;
