@@ -1,29 +1,33 @@
 {
-      "name": "Plan de Entrenamiento NMS",
-        "short_name": "NMS Training",
-          "description": "Plan de entrenamiento semanal de Natalia Martín",
-            "start_url": "/training_plan_nms/",
-              "scope": "/training_plan_nms/",
-                "display": "standalone",
-                  "orientation": "portrait",
-                    "theme_color": "#0a0a0a",
-                      "background_color": "#0a0a0a",
-                        "lang": "es",
-                          "icons": [
-                              {
-                                    "src": "./logotipo-pauta.svg",
-                                          "sizes": "any",
-                                                "type": "image/svg+xml",
-                                                      "purpose": "any"
-                                                          },
-                                                              {
-                                                                    "src": "./logotipo-pauta-inv.svg",
-                                                                          "sizes": "any",
-                                                                                "type": "image/svg+xml",
-                                                                                      "purpose": "maskable"
-                                                                                          }
-                                                                                            ],
-                                                                                              "screenshots": [],
-                                                                                                "categories": ["health", "fitness"]
-                                                                                                }
+  "name": "Pauta",
+  "short_name": "Pauta",
+  "description": "Registro y control de entrenamiento",
+  "start_url": "/training_plan_nms/",
+  "scope": "/training_plan_nms/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#FAF8F5",
+  "background_color": "#FAF8F5",
+  "lang": "es",
+  "icons": [
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "categories": ["health", "fitness"]
 }
