@@ -11,7 +11,817 @@
     #__bundler_thumbnail { position: fixed; inset: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #faf9f5; z-index: 9999; }
     #__bundler_thumbnail svg { width: 100%; height: 100%; object-fit: contain; }
     #__bundler_placeholder { color: #999; font-size: 14px; }
-  </style>
+<!DOCTYPE html>
+  <html lang="es">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Plan 2026/27</title>
+  <link rel="manifest" href="/training_plan_nms/manifest.json">
+  <meta name="theme-color" content="#0F0E0D">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="NMS Training">
+  <link rel="apple-touch-icon" href="/training_plan_nms/logotipo-pauta.svg">
+  <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('/training_plan_nms/sw.js');}</script>
+                                           <link rel="preconnect" href="https://fonts.bunny.net">
+                                           <link href="https://fonts.bunny.net/css?family=instrument-serif:400,400i|instrument-sans:300,400,500,600" rel="stylesheet">
+                                           <style>
+                                           :root {
+                                               --ink:   #0F0E0D;
+                                               --ink2:  #2D2C2A;
+                                               --mid:   #4A4845;
+                                               --pale:  #8A8784;
+                                               --rule:  #DEDBD5;
+                                               --rule2: #ECEAE5;
+                                               --surf:  #F5F3EF;
+                                               --white: #FFFFFF;
+                                               --green: #1A5C3A;
+                                               --amber: #7A6020;
+                                               --red:   #7A2020;
+                                               --serif: 'Instrument Serif', Georgia, serif;
+                                               --sans:  'Instrument Sans', system-ui, sans-serif;
+                                               --nav-h: 64px;
+                                               --top-h: 48px;
+                                           }
+                                           *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+                                           html { font-size: 16px; }
+                                           body {
+                                               font-family: var(--sans);
+                                               font-weight: 400;
+                                               background: var(--white);
+                                               color: var(--ink);
+                                               -webkit-font-smoothing: antialiased;
+                                               -webkit-tap-highlight-color: transparent;
+                                               min-height: 100dvh;
+                                               padding-top: calc(var(--top-h) + env(safe-area-inset-top));
+                                               padding-bottom: calc(var(--nav-h) + env(safe-area-inset-bottom));
+                                               overscroll-behavior: none;
+                                           }
+                                           ::-webkit-scrollbar { display: none; }
+                                           * { scrollbar-width: none; }
+                                           
+  /* ── TOPBAR ── */
+  .topbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: calc(var(--top-h) + env(safe-area-inset-top));
+      padding-top: env(safe-area-inset-top);
+      background: rgba(255,255,255,.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      align-items: flex-end;
+      padding-bottom: 0;
+  }
+                                           .topbar-in {
+                                               width: 100%;
+                                               height: var(--top-h);
+                                               padding: 0 20px;
+                                               display: flex;
+                                               justify-content: space-between;
+                                               align-items: center;
+                                           }
+                                           .topbar-logo {
+                                               font-family: var(--serif);
+                                               font-size: 17px;
+                                               color: var(--ink);
+                                               letter-spacing: -.01em;
+                                           }
+                                           .topbar-sub {
+                                               font-size: 12px;
+                                               font-weight: 400;
+                                               letter-spacing: .06em;
+                                               text-transform: uppercase;
+                                               color: var(--pale);
+                                           }
+                                           
+  /* ── BOTTOM NAV ── */
+  .botnav {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 100;
+      height: calc(var(--nav-h) + env(safe-area-inset-bottom));
+      padding-bottom: env(safe-area-inset-bottom);
+      background: rgba(255,255,255,.97);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-top: 1px solid var(--rule);
+      display: flex;
+      align-items: flex-start;
+      padding-top: 4px;
+  }
+                                           .botnav-in {
+                                               width: 100%;
+                                               height: var(--nav-h);
+                                               display: flex;
+                                               align-items: stretch;
+                                           }
+                                           .bntab {
+                                               flex: 1;
+                                               display: flex;
+                                               flex-direction: column;
+                                               align-items: center;
+                                               justify-content: center;
+                                               gap: 4px;
+                                               cursor: pointer;
+                                               transition: opacity .12s;
+                                               min-height: 44px;
+                                               padding: 4px 0;
+                                               border: none;
+                                               background: none;
+                                               color: var(--pale);
+                                               user-select: none;
+                                               -webkit-user-select: none;
+                                           }
+                                           .bntab.on { color: var(--ink); }
+                                           .bntab-icon { width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; }
+                                           .bntab-icon svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+                                           .bntab.on .bntab-icon svg { stroke-width: 2; }
+                                           .bntab-lbl {
+                                               font-size: 10px;
+                                               font-weight: 400;
+                                               letter-spacing: .06em;
+                                               text-transform: uppercase;
+                                               line-height: 1;
+                                           }
+                                           
+  /* ── SECTIONS ── */
+  .sec { display: none; }
+                                           .sec.on { display: block; }
+                                           
+  /* ── HOY ── */
+  .hoy-wrap { padding: 20px 20px 24px; }
+                                           .hoy-date { font-size: 13px; font-weight: 400; letter-spacing: .08em; text-transform: uppercase; color: var(--pale); margin-bottom: 8px; }
+                                           .hoy-title { font-family: var(--serif); font-size: 26px; color: var(--ink); line-height: 1.15; margin-bottom: 16px; }
+                                           .hoy-badge { display: inline-flex; align-items: center; padding: 4px 12px; font-size: 11px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; border: 1.5px solid var(--ink); color: var(--ink); margin-bottom: 20px; }
+                                           .hoy-meta { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 20px; padding-bottom: 18px; border-bottom: 1px solid var(--rule2); }
+                                           .hoy-meta-item { display: flex; flex-direction: column; gap: 3px; }
+                                           .hoy-meta-k { font-size: 10px; font-weight: 400; letter-spacing: .1em; text-transform: uppercase; color: var(--pale); }
+                                           .hoy-meta-v { font-family: var(--serif); font-size: 18px; color: var(--ink); line-height: 1; }
+                                           .hoy-blocks { display: flex; gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-bottom: 20px; flex-wrap: wrap; }
+                                           .hoy-block { background: var(--white); padding: 12px 14px; flex: 1; min-width: 120px; }
+                                           .hoy-block-k { font-size: 10px; font-weight: 400; letter-spacing: .1em; text-transform: uppercase; color: var(--pale); margin-bottom: 5px; }
+                                           .hoy-block-v { font-family: var(--serif); font-size: 16px; color: var(--ink); }
+                                           .hoy-ex-label { font-size: 11px; font-weight: 400; letter-spacing: .1em; text-transform: uppercase; color: var(--pale); margin-bottom: 10px; }
+                                           .hoy-ex-list { display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--rule2); margin-bottom: 20px; }
+                                           .hoy-ex-row { display: grid; grid-template-columns: 1fr 70px 60px; gap: 0 12px; padding: 11px 0; border-bottom: 1px solid var(--rule2); align-items: baseline; }
+                                           .hoy-ex-name { font-size: 14px; font-weight: 400; color: var(--ink); line-height: 1.35; }
+                                           .hoy-ex-val { font-size: 13px; font-weight: 300; color: var(--mid); }
+                                           .hoy-ex-hd { font-size: 10px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--pale); padding: 6px 0 8px; }
+                                           .hoy-notes { padding: 14px 16px; background: var(--surf); border: 1px solid var(--rule); font-size: 14px; font-weight: 300; line-height: 1.65; color: var(--mid); }
+                                           .hoy-rest { padding: 60px 20px; text-align: center; }
+                                           .hoy-rest-title { font-family: var(--serif); font-size: 28px; color: var(--ink); margin-bottom: 8px; }
+                                           .hoy-rest-sub { font-size: 14px; font-weight: 300; color: var(--pale); }
+                                           .hoy-phase-strip { margin-bottom: 24px; padding: 14px 16px; background: var(--surf); border: 1px solid var(--rule); }
+                                           .hoy-phase-k { font-size: 10px; font-weight: 400; letter-spacing: .1em; text-transform: uppercase; color: var(--pale); margin-bottom: 5px; }
+                                           .hoy-phase-v { font-size: 14px; font-weight: 400; color: var(--ink); line-height: 1.4; }
+                                           .hoy-phase-v b { font-weight: 600; }
+                                           
+  /* ── SEMANA ── */
+  .wk-strip-wrap {
+      overflow-x: auto;
+      border-bottom: 1px solid var(--rule);
+      background: var(--white);
+      display: flex;
+      align-items: stretch;
+      min-height: 80px;
+  }
+                                           .wk-strip { display: flex; align-items: stretch; min-width: 100%; }
+                                           .wk-nav-btn {
+                                               flex-shrink: 0;
+                                               width: 44px;
+                                               min-height: 44px;
+                                               display: flex;
+                                               align-items: center;
+                                               justify-content: center;
+                                               background: none;
+                                               border: none;
+                                               border-right: 1px solid var(--rule2);
+                                               cursor: pointer;
+                                               color: var(--mid);
+                                               font-size: 18px;
+                                               transition: background .12s;
+                                               padding: 0;
+                                           }
+                                           .wk-nav-btn:last-child { border-right: none; border-left: 1px solid var(--rule2); }
+                                           .wk-nav-btn:hover { background: var(--surf); }
+                                           .wk-days { display: flex; flex: 1; }
+                                           .day-pill {
+                                               flex: 1;
+                                               min-width: 44px;
+                                               display: flex;
+                                               flex-direction: column;
+                                               align-items: center;
+                                               justify-content: center;
+                                               gap: 3px;
+                                               padding: 12px 4px;
+                                               cursor: pointer;
+                                               border-right: 1px solid var(--rule2);
+                                               transition: background .1s;
+                                               position: relative;
+                                               min-height: 80px;
+                                           }
+                                           .day-pill:last-child { border-right: none; }
+                                           .day-pill:hover { background: var(--surf); }
+                                           .day-pill.box { background: var(--ink); }
+                                           .day-pill.box:hover { background: #1a1917; }
+                                           .day-pill.selected { outline: 2.5px solid var(--ink); outline-offset: -2.5px; }
+                                           .day-pill.box.selected { outline-color: var(--white); }
+                                           .day-pill.today .dp-num::after {
+                                               content: '';
+                                               display: block;
+                                               width: 4px; height: 4px;
+                                               border-radius: 50%;
+                                               background: var(--ink);
+                                               margin: 3px auto 0;
+                                           }
+                                           .day-pill.box.today .dp-num::after { background: var(--white); }
+                                           .dp-dow { font-size: 9px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--pale); }
+                                           .day-pill.box .dp-dow { color: rgba(255,255,255,.5); }
+                                           .day-pill.rest .dp-dow { color: var(--rule); }
+                                           .dp-num { font-family: var(--serif); font-size: 22px; line-height: 1.1; color: var(--ink); text-align: center; }
+                                           .day-pill.box .dp-num { color: var(--white); }
+                                           .day-pill.rest .dp-num { color: var(--pale); }
+                                           .dp-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--ink); }
+                                           .day-pill.box .dp-dot { background: rgba(255,255,255,.6); }
+                                           .dp-dot.hidden { opacity: 0; }
+                                           
+  .wk-week-label { padding: 12px 20px 0; font-family: var(--serif); font-size: 18px; color: var(--ink); }
+                                           
+  /* Day detail (expanded below strip) */
+  .wk-detail { background: var(--surf); border-bottom: 1px solid var(--rule); }
+                                           .wk-detail.hidden { display: none; }
+                                           .wd-inner { padding: 18px 20px 22px; }
+                                           .wd-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 14px; gap: 12px; }
+                                           .wd-title { font-family: var(--serif); font-size: 20px; color: var(--ink); line-height: 1.2; }
+                                           .wd-type { font-size: 10px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--mid); border: 1px solid var(--rule); padding: 3px 9px; background: var(--white); white-space: nowrap; }
+                                           .wd-close { background: none; border: none; font-size: 20px; color: var(--pale); cursor: pointer; padding: 0 4px; line-height: 1; flex-shrink: 0; min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center; }
+                                           .wd-meta { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid var(--rule2); }
+                                           .wd-meta-item { font-size: 13px; font-weight: 300; color: var(--mid); }
+                                           .wd-meta-item b { font-weight: 500; color: var(--ink); }
+                                           .wd-blocks { display: flex; gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-bottom: 14px; flex-wrap: wrap; }
+                                           .wd-block { background: var(--white); padding: 10px 14px; flex: 1; min-width: 120px; }
+                                           .wd-block-k { font-size: 10px; font-weight: 400; letter-spacing: .1em; text-transform: uppercase; color: var(--pale); margin-bottom: 4px; }
+                                           .wd-block-v { font-family: var(--serif); font-size: 15px; color: var(--ink); }
+                                           .wd-ex-grid { border-top: 1px solid var(--rule2); margin-bottom: 14px; }
+                                           .wd-ex-hd { display: grid; grid-template-columns: 1fr 70px 60px; gap: 0 12px; padding: 8px 0; border-bottom: 1px solid var(--rule); }
+                                           .wd-ex-hd span { font-size: 10px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--pale); }
+                                           .wd-ex-row { display: grid; grid-template-columns: 1fr 70px 60px; gap: 0 12px; padding: 10px 0; border-bottom: 1px solid var(--rule2); align-items: baseline; }
+                                           .wd-ex-row:last-child { border-bottom: none; }
+                                           .wd-ex-row span:first-child { font-size: 14px; font-weight: 400; color: var(--ink); line-height: 1.35; }
+                                           .wd-ex-row span { font-size: 13px; font-weight: 300; color: var(--mid); }
+                                           .wd-notes { padding: 12px 14px; background: var(--white); border: 1px solid var(--rule); font-size: 14px; font-weight: 300; line-height: 1.65; color: var(--mid); }
+                                           .wd-no-session { padding: 20px 0 4px; font-size: 14px; font-weight: 300; color: var(--pale); }
+                                           
+  .fase-ctx { padding: 14px 20px; font-size: 14px; font-weight: 300; color: var(--mid); line-height: 1.55; border-top: 1px solid var(--rule2); }
+                                           .fase-ctx b { font-weight: 500; color: var(--ink); }
+                                           
+  /* ── PLAN ── */
+  .plan-wrap { padding: 20px 20px 24px; }
+                                           
+  .fase-strip { display: grid; grid-template-columns: repeat(2,1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-bottom: 28px; }
+                                           .fcard { background: var(--white); padding: 18px 16px; position: relative; overflow: hidden; cursor: default; }
+                                           .fcard.act { background: var(--ink); }
+                                           .fnum-bg { font-family: var(--serif); font-size: 80px; font-weight: 400; font-style: italic; line-height: .7; color: var(--rule2); position: absolute; bottom: -6px; right: 6px; user-select: none; pointer-events: none; }
+                                           .fcard.act .fnum-bg { color: rgba(255,255,255,.07); }
+                                           .fk { font-size: 10px; font-weight: 400; letter-spacing: .12em; text-transform: uppercase; color: var(--pale); margin-bottom: 8px; }
+                                           .fcard.act .fk { color: rgba(255,255,255,.4); }
+                                           .ftitle { font-family: var(--serif); font-size: 16px; color: var(--ink); line-height: 1.2; }
+                                           .fcard.act .ftitle { color: var(--white); }
+                                           .fdates { font-size: 12px; font-weight: 300; color: var(--pale); margin-top: 5px; }
+                                           .fcard.act .fdates { color: rgba(255,255,255,.4); }
+                                           .fprog { height: 2px; background: var(--rule); margin-top: 12px; }
+                                           .fcard.act .fprog { background: rgba(255,255,255,.2); }
+                                           .fprog-fill { height: 100%; background: var(--ink); }
+                                           .fcard.act .fprog-fill { background: var(--white); }
+                                           .fpct { font-size: 10px; color: var(--pale); margin-top: 4px; }
+                                           .fcard.act .fpct { color: rgba(255,255,255,.4); }
+                                           
+  .plan-section-label { font-size: 11px; font-weight: 400; letter-spacing: .12em; text-transform: uppercase; color: var(--pale); margin-bottom: 14px; }
+                                           
+  .splits-ref { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-bottom: 8px; }
+                                           .sr-cell { background: var(--white); padding: 14px 12px; }
+                                           .sr-cell.dim { background: var(--surf); }
+                                           .sr-name { font-size: 9px; font-weight: 400; letter-spacing: .1em; text-transform: uppercase; color: var(--pale); margin-bottom: 6px; }
+                                           .sr-now { font-family: var(--serif); font-size: 20px; color: var(--ink); line-height: 1; }
+                                           .sr-cell.dim .sr-now { color: var(--pale); }
+                                           .sr-obj { font-size: 12px; font-weight: 300; color: var(--mid); margin-top: 4px; }
+                                           .sr-gain { font-size: 12px; font-weight: 500; color: var(--ink); margin-top: 2px; }
+                                           .sr-cell.dim .sr-gain { color: var(--pale); }
+                                           
+  .total-row { display: flex; justify-content: space-between; align-items: baseline; padding: 14px 0; border-top: 1px solid var(--rule); margin-bottom: 28px; }
+                                           .total-lbl { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--pale); }
+                                           .total-val { font-family: var(--serif); font-size: 30px; color: var(--ink); }
+                                           .total-old { font-family: var(--serif); font-size: 20px; color: var(--rule); text-decoration: line-through; margin-right: 8px; }
+                                           
+  .goal-bar-wrap { height: 3px; background: var(--rule); margin: 10px 0 5px; }
+                                           .goal-bar-fill { height: 100%; background: var(--ink); transition: width .5s; }
+                                           .goal-meta { display: flex; justify-content: space-between; font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--pale); margin-bottom: 28px; }
+                                           
+  .tl { border-top: 1px solid var(--rule2); }
+                                           .tl-row { display: grid; grid-template-columns: 80px 1fr; gap: 0 14px; padding: 13px 0; border-bottom: 1px solid var(--rule2); align-items: baseline; }
+                                           .tl-row:last-child { border-bottom: none; }
+                                           .tl-d { font-size: 11px; font-weight: 400; letter-spacing: .08em; text-transform: uppercase; color: var(--pale); }
+                                           .tl-d.on { color: var(--ink); font-weight: 500; }
+                                           .tl-t { font-size: 14px; font-weight: 300; color: var(--ink); line-height: 1.45; }
+                                           .tl-t b { font-weight: 500; }
+                                           .tl-t em { color: var(--mid); font-style: normal; }
+                                           
+  /* ── HISTORIAL ── */
+  .hist-header { padding: 20px 20px 0; }
+                                           .hist-filters { display: flex; gap: 6px; flex-wrap: wrap; padding: 14px 20px; border-bottom: 1px solid var(--rule); }
+                                           .filt-btn { background: none; border: 1.5px solid var(--rule); padding: 7px 14px; font-family: var(--sans); font-size: 11px; font-weight: 400; letter-spacing: .08em; text-transform: uppercase; color: var(--mid); cursor: pointer; transition: all .12s; min-height: 36px; }
+                                           .filt-btn:hover { border-color: var(--mid); }
+                                           .filt-btn.on { background: var(--ink); border-color: var(--ink); color: var(--white); }
+                                           
+  .h-card { border-bottom: 1px solid var(--rule); }
+                                           .h-head { padding: 16px 20px; display: grid; grid-template-columns: 96px 1fr auto; gap: 0 14px; align-items: start; cursor: pointer; min-height: 56px; }
+                                           .h-head:hover { background: var(--surf); }
+                                           .h-date { font-family: var(--serif); font-size: 16px; color: var(--ink); }
+                                           .h-date-dow { font-size: 10px; font-weight: 400; letter-spacing: .08em; text-transform: uppercase; color: var(--pale); margin-top: 2px; }
+                                           .h-type { font-size: 10px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--mid); border: 1px solid var(--rule); padding: 2px 8px; display: inline-block; margin-bottom: 6px; }
+                                           .h-summary { font-size: 14px; font-weight: 300; color: var(--mid); line-height: 1.5; }
+                                           .h-summary b { font-weight: 500; color: var(--ink); }
+                                           .h-right { display: flex; flex-direction: column; align-items: flex-end; gap: 3px; flex-shrink: 0; }
+                                           .h-rec { font-family: var(--serif); font-size: 20px; line-height: 1; }
+                                           .h-rec-lbl { font-size: 9px; letter-spacing: .08em; text-transform: uppercase; color: var(--pale); }
+                                           .h-body { display: none; padding: 16px 20px 20px; border-top: 1px solid var(--rule2); background: var(--surf); }
+                                           .h-body.open { display: block; }
+                                           .h-body-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px,1fr)); gap: 14px; margin-bottom: 14px; }
+                                           .h-data-k { font-size: 10px; font-weight: 400; letter-spacing: .12em; text-transform: uppercase; color: var(--pale); margin-bottom: 4px; }
+                                           .h-data-v { font-family: var(--serif); font-size: 18px; color: var(--ink); }
+                                           .h-splits { display: flex; gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-bottom: 14px; flex-wrap: wrap; }
+                                           .h-split { background: var(--white); padding: 10px 12px; flex: 1; min-width: 80px; }
+                                           .h-split-k { font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: var(--pale); margin-bottom: 4px; }
+                                           .h-split-v { font-family: var(--serif); font-size: 15px; color: var(--ink); }
+                                           .h-ex-table { width: 100%; border-collapse: collapse; }
+                                           .h-ex-table td { font-size: 13px; font-weight: 300; padding: 9px 0; border-bottom: 1px solid var(--rule2); color: var(--mid); }
+                                           .h-ex-table tr:last-child td { border-bottom: none; }
+                                           .h-ex-table td:first-child { color: var(--ink); font-weight: 400; width: 55%; }
+                                           .h-notes { margin-top: 12px; padding: 12px 14px; background: var(--white); border: 1px solid var(--rule); font-size: 14px; font-weight: 300; line-height: 1.65; color: var(--mid); }
+                                           .h-empty { padding: 48px 20px; text-align: center; font-size: 14px; font-weight: 300; color: var(--pale); }
+                                           
+  /* ── TESTS ── */
+  .spl-wrap { padding: 20px 20px 24px; }
+                                           .spl-hero { display: grid; grid-template-columns: 1fr 1px 1fr; border: 1px solid var(--rule); margin-bottom: 24px; }
+                                           .spl-div { background: var(--rule); }
+                                           .spl-stat { padding: 20px 16px; }
+                                           .spl-k { font-size: 11px; font-weight: 400; letter-spacing: .12em; text-transform: uppercase; color: var(--pale); margin-bottom: 8px; }
+                                           .spl-big { font-family: var(--serif); font-size: clamp(38px,7vw,72px); font-weight: 400; line-height: .85; letter-spacing: -.02em; color: var(--ink); }
+                                           .spl-big.dim { color: var(--rule); }
+                                           .spl-sub { font-size: 12px; font-weight: 300; color: var(--mid); margin-top: 10px; line-height: 1.4; }
+                                           @media(max-width:360px) { .spl-hero { grid-template-columns: 1fr; } .spl-div { display: none; } }
+                                           
+  .spl-list { border-top: 1px solid var(--rule); }
+                                           .spl-row { display: grid; grid-template-columns: 90px 64px 1fr; gap: 0 16px; padding: 16px 0; border-bottom: 1px solid var(--rule2); align-items: center; }
+                                           .spl-row:last-child { border-bottom: none; }
+                                           .spl-row.best { background: var(--surf); margin: 0 -20px; padding: 16px 20px; }
+                                           .spl-d { font-size: 12px; font-weight: 300; color: var(--mid); }
+                                           .spl-tot { font-family: var(--serif); font-size: 20px; color: var(--ink); }
+                                           .spl-row.best .spl-tot { font-weight: 700; }
+                                           .spl-bars { display: flex; align-items: flex-end; gap: 3px; height: 32px; }
+                                           .spl-bwrap { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+                                           .spl-bar { width: 12px; background: var(--rule); }
+                                           .spl-row.best .spl-bar { background: var(--ink); }
+                                           .spl-blbl { font-size: 7px; letter-spacing: .05em; text-transform: uppercase; color: var(--pale); }
+                                           .spl-notes { font-size: 12px; color: var(--pale); grid-column: 1/-1; margin-top: -8px; padding-bottom: 4px; }
+                                           .spl-empty { padding: 48px 0; text-align: center; font-size: 14px; font-weight: 300; color: var(--pale); }
+                                           </style>
+</head>
+<body>
+
+  <header class="topbar">
+      <div class="topbar-in">
+            <div class="topbar-logo">Pauta</div>div>
+            <div class="topbar-sub" id="top-sub">Plan 2026/27</div>div>
+      </div>div>
+  </header>header>
+
+  <!-- ═══ HOY ═══ -->
+  <section class="sec on" id="s-hoy">
+      <div class="hoy-wrap" id="hoy-wrap"></div>div>
+  </section>section>
+
+  <!-- ═══ SEMANA ═══ -->
+  <section class="sec" id="s-semana">
+      <div class="wk-week-label" id="wk-week-label"></div>div>
+      <div class="wk-strip-wrap">
+            <div class="wk-strip">
+                    <button class="wk-nav-btn" onclick="shiftWk(-1)" aria-label="Semana anterior">&#8249;</button>button>
+                    <div class="wk-days" id="wk-days"></div>div>
+                    <button class="wk-nav-btn" onclick="shiftWk(1)" aria-label="Semana siguiente">&#8250;</button>button>
+            </div>div>
+      </div>div>
+      <div class="wk-detail hidden" id="wk-detail">
+            <div class="wd-inner" id="wd-inner"></div>div>
+      </div>div>
+      <div class="fase-ctx" id="fase-ctx"></div>div>
+  </section>section>
+
+  <!-- ═══ PLAN ═══ -->
+  <section class="sec" id="s-plan">
+      <div class="plan-wrap">
+            <div class="fase-strip" id="fase-strip"></div>div>
+
+            <div class="plan-section-label">Test aislado &middot; evoluci&oacute;n hacia el objetivo</div>div>
+            <div class="goal-bar-wrap"><div class="goal-bar-fill" id="plan-goal-bar" style="width:0%"></div>div></div>div>
+            <div class="goal-meta">
+                    <span>27'00" inicial</span>
+                  <span id="plan-goal-pct">0%</span>
+                  <span>24'00" objetivo</span>
+            </div>div>
+      
+          <div class="splits-ref" id="splits-ref"></div>div>
+          <div class="total-row">
+                <div class="total-lbl">Total objetivo</div>div>
+                <div><span class="total-old">27'</span>span><span class="total-val">24'00"</span>span></div>
+          </div>
+      
+          <div class="plan-section-label" style="margin-bottom:14px">L&iacute;nea de tiempo</div>
+          <div class="tl" id="plan-tl"></div>
+      </div>
+  </section>section>
+
+<!-- ═══ HISTORIAL ═══ -->
+<section class="sec" id="s-historial">
+  <div class="hist-header">
+        <div class="plan-section-label" style="margin:0 0 14px">Sesiones registradas</div>
+  </div>
+    <div class="hist-filters" id="hist-filters"></div>
+    <div class="h-grid" id="h-grid"></div>
+</section>section>
+
+  <!-- ═══ TESTS ═══ -->
+  <section class="sec" id="s-splits">
+      <div class="spl-wrap">
+            <div class="plan-section-label" style="margin-bottom:16px">50 burpees &rarr; 1km remo &rarr; 50 WB &middot; evoluci&oacute;n</div>
+            <div class="spl-hero">
+                    <div class="spl-stat">
+                              <div class="spl-k">Mejor resultado</div>
+                              <div class="spl-big dim" id="spl-best">&mdash;</div>
+                              <div class="spl-sub" id="spl-best-sub">Sin datos a&uacute;n</div>
+                    </div>
+                    <div class="spl-div"></div>
+                    <div class="spl-stat">
+                              <div class="spl-k">Objetivo &middot; Sep S4</div>
+                              <div class="spl-big">24'</div>
+                              <div class="spl-sub">&minus;3'00" respecto al test inicial del 22 ago</div>
+                    </div>
+            </div>
+            <div class="plan-section-label" style="margin-bottom:0">Historial de tests</div>
+            <div class="spl-list" id="spl-list"></div>
+      </div>
+  </section>section>
+
+  <!-- ═══ BOTTOM NAV ═══ -->
+  <nav class="botnav" role="navigation" aria-label="Navegaci&oacute;n principal">
+      <div class="botnav-in">
+            <button class="bntab on" id="bntab-hoy" onclick="nav('hoy',this)" aria-label="Hoy">
+                    <div class="bntab-icon">
+                              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>svg>
+                    </div>
+                    <span class="bntab-lbl">Hoy</span>
+            </button>button>
+            <button class="bntab" id="bntab-semana" onclick="nav('semana',this)" aria-label="Semana">
+                    <div class="bntab-icon">
+                              <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>svg>
+                    </div>
+                    <span class="bntab-lbl">Semana</span>
+            </button>button>
+            <button class="bntab" id="bntab-plan" onclick="nav('plan',this)" aria-label="Plan">
+                    <div class="bntab-icon">
+                              <svg viewBox="0 0 24 24"><path d="M3 3h18v18H3z" rx="1"/><path d="M3 9h18M9 21V9"/></svg>svg>
+                    </div>
+                    <span class="bntab-lbl">Plan</span>
+            </button>button>
+            <button class="bntab" id="bntab-historial" onclick="nav('historial',this)" aria-label="Historial">
+                    <div class="bntab-icon">
+                              <svg viewBox="0 0 24 24"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="9"/></svg>svg>
+                    </div>
+                    <span class="bntab-lbl">Historial</span>
+            </button>button>
+            <button class="bntab" id="bntab-splits" onclick="nav('splits',this)" aria-label="Tests">
+                    <div class="bntab-icon">
+                              <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>svg>
+                    </div>
+                    <span class="bntab-lbl">Tests</span>
+            </button>button>
+      </div>
+  </nav>nav>
+
+  <script>
+    const FASES = [
+      { num:'I',   label:'Específico test',         dates:'Ago S4 → Sep S3 · 5 sem', desc:'Box lun/mié/vie fijo. Martes y sábado atacan los cuatro bloques con margen. Prioridad: burpees ritmo constante, remo técnica de piernas, WB sin romper la sentadilla.', start:'2026-08-25', end:'2026-09-27' },
+      { num:'II',  label:'Base aeróbica pre-op',    dates:'Oct – Nov S2 · 6 sem',     desc:'Box fijo. Volumen de carrera Z2 sin buscar rendimiento. El objetivo es llegar a la operación con la mejor base posible.', start:'2026-09-28', end:'2026-11-15' },
+      { num:'III', label:'Reintroducción post-op',  dates:'Dic – Ene · 4–6 sem',      desc:'Vuelta al box con autorización médica al 60–70%. Respiración nasal como regulador de intensidad.', start:'2026-12-01', end:'2027-01-31' },
+      { num:'IV',  label:'Específico Hyrox',        dates:'Feb – Mar 2027 · 6 sem',   desc:'Box como entrenamiento Hyrox consciente. Martes intervalos de calidad. Sábado simulacros cronometrados.', start:'2027-02-01', end:'2027-03-31' },
+      ];
+
+    const TIMELINE = [
+      { d:'22 ago',   t:'Test: 27\'00" — referencia con splits reales.', on:true },
+      { d:'Ago–Sep',  t:'Fase I · cinco semanas específicas. Box lun/mié/vie fijo.', on:false },
+      { d:'Sep S4',   t:'Test objetivo: 24\'00".', on:true },
+      { d:'Oct–Nov',  t:'Fase II · base aeróbica pre-operación.', on:false },
+      { d:'Nov S3',   t:'Operación septoplastia. Paréntesis 3–6 semanas.', on:false },
+      { d:'Dic–Ene',  t:'Fase III · reintroducción post-op.', on:false },
+      { d:'Feb–Mar',  t:'Fase IV · específico Hyrox. Simulaciones y pico.', on:false },
+      { d:'Abr 2027', t:'Hyrox París.', on:true },
+      ];
+
+    const SPLITS_REF = [
+      { name:'B1 Carrera',    now:"4'00\"",  obj:"4'00\"",  gain:'✓',    dim:true },
+      { name:'B2 Burpees',    now:"~4'21\"", obj:"3'30\"",  gain:'−51"', dim:false },
+      { name:'B3 Zancadas',   now:"~3'23\"", obj:"3'00\"",  gain:'−23"', dim:false },
+      { name:'B4 Flexiones',  now:"~1'56\"", obj:"1'30\"",  gain:'−26"', dim:false },
+      { name:'B5 Remo',       now:"5'20\"",  obj:"4'45\"",  gain:'−35"', dim:false },
+      { name:'B6 Wall balls', now:"8'00\"",  obj:"7'15\"",  gain:'−45"', dim:false },
+      ];
+
+    const SCHEDULE = {
+        0:{ label:'DOM', type:'Descanso',             isBox:false, rest:true  },
+        1:{ label:'LUN', type:'Box · Hyrox',          isBox:true,  rest:false },
+        2:{ label:'MAR', type:'Box',                  isBox:true,  rest:false },
+        3:{ label:'MIÉ', type:'Box · Hyrox fuerza',   isBox:true,  rest:false },
+        4:{ label:'JUE', type:'Open solo',            isBox:false, rest:false },
+        5:{ label:'VIE', type:'Box · Hyrox potencia', isBox:true,  rest:false },
+        6:{ label:'SÁB', type:'Test aislado',         isBox:false, rest:false },
+    };
+
+    const SESSIONS = [
+      {
+            id:1, date:'2026-08-24', type:'Box · Hyrox completo', category:'Hyrox',
+            summary:'Aíbridos/Hyrox — 5 estaciones 40" on / 20" off. Cal. 6 min EMOM 45".',
+            recovery:null, hrv:null, rhr:null, feel:null, duration:'~60 min',
+            blocks:[{label:'Calentamiento',val:'6 min EMOM 45"'},{label:'Estaciones',val:'5 × 8 min · 40/20'}],
+            exercises:[
+              {name:'EMOM 1 — Ski erg',load:'RPE5',reps:'45"'},{name:'EMOM 2 — Zancadas frontales',load:'',reps:'45"'},
+              {name:'EMOM 3 — Flexiones judo',load:'',reps:'45"'},{name:'EMOM 4 — Remo',load:'RPE5',reps:'45"'},
+              {name:'EMOM 5 — KB swings',load:'',reps:'45"'},{name:'EMOM 6 — Burpees + squat jump',load:'',reps:'45"'},
+              {name:'#1A — Empuje underhand trineo',load:'RPE9',reps:'40"'},{name:'#1B — Carrera',load:'RPE9',reps:'40"'},
+              {name:'#2A — Flexiones liberando manos',load:'',reps:'40"'},{name:'#2B — Sprint remo',load:'RPE9',reps:'40"'},
+              {name:'#3A — Zancadas frontales goblet KB',load:'',reps:'40"'},{name:'#3B — Remo seesaw doble KB',load:'',reps:'40"'},
+              {name:'#4A — Plancha antebrazos',load:'',reps:'40"'},{name:'#4B — Ski erg',load:'RPE9',reps:'40"'},
+              {name:'#5A — KB swings rusos',load:'',reps:'40"'},{name:'#5B — Wall balls',load:'',reps:'40"'},
+                  ],
+            notes:'WOD dirigido. 8 min por zona intercalando A y B · 40" on / 20" off.',
+      },
+      {
+            id:2, date:'2026-08-25', type:'Box · AMRAP', category:'CrossFit',
+            summary:'A60 — AMRAP 28 min. Soporte en L, dominadas al pecho, burpees salto a caja, 300m carrera.',
+            recovery:null, hrv:null, rhr:null, feel:null, duration:'~40 min',
+            blocks:[{label:'Formato',val:'AMRAP 28 min'}],
+            exercises:[
+              {name:'Soporte en L',load:'',reps:'15"'},{name:'Dominadas al pecho',load:'',reps:'12'},
+              {name:'Burpees salto a caja',load:'',reps:'9'},{name:'Carrera',load:'',reps:'300m'},
+                  ],
+            notes:'Artabros CrossFit · A60.',
+      },
+      {
+            id:3, date:'2026-08-26', type:'Box · Hyrox fuerza', category:'Hyrox',
+            summary:'Aíbridos/Hyrox Complete — 12 roldas 2\'30" on / 45" off. 4 estaciones con carrera RPE8.',
+            recovery:null, hrv:null, rhr:null, feel:null, duration:'~65 min',
+            blocks:[{label:'Calentamiento',val:'7 min EMOM 45"'},{label:'Estímulo Race',val:'12 roldas · 2\'30" / 45"'}],
+            exercises:[
+              {name:'EMOM 1 — Carrera',load:'',reps:'200m'},{name:'EMOM 2 — Down and up + escaladores cruzados',load:'',reps:'1+10'},
+              {name:'EMOM 3 — Jumping jacks frontales',load:'',reps:'45"'},{name:'EMOM 4 — Ski erg',load:'RPE5',reps:'45"'},
+              {name:'EMOM 5 — Zancadas + sentadillas',load:'',reps:'2+2'},{name:'EMOM 6 — Flexiones plank jack',load:'',reps:'45"'},
+              {name:'EMOM 7 — Carrera',load:'',reps:'200m'},
+              {name:'#1 — Thrusters doble mancuerna',load:'RPE8',reps:'12'},{name:'#1 — Carrera FRT',load:'RPE8',reps:''},
+              {name:'#2P1 — Sled pull solo brazos',load:'RPE8',reps:'15m'},{name:'#2P2 — Plancha antebrazos',load:'',reps:'pareja'},
+              {name:'#3 — Wall balls',load:'RPE8',reps:'24 (9/6·6/4 kg)'},{name:'#3 — Carrera FRT',load:'RPE8',reps:''},
+              {name:'#4 — Flexiones',load:'RPE8',reps:'20/25'},{name:'#4 — Ski erg FRT',load:'RPE8',reps:''},
+                  ],
+            notes:'Cal. 7 min EMOM 45". Estímulo Race: 12 roldas de 2\'30" on / 45" off.',
+      },
+      ];
+
+    const TEST_SPLITS = [
+      { id:1, date:'2026-08-22', total:"27'00\"", totalSecs:1620, b:["4'00\"","~4'21\"","~3'23\"","~1'56\"","5'20\"","8'00\""], notes:"Test inicial. Entrada a WB a las 19'." },
+      ];
+
+    const iso = d => d.toISOString().split('T')[0];
+    const TODAY = iso(new Date());
+
+    function monday(d) {
+        const t = new Date(d); t.setHours(0,0,0,0);
+        const dow = t.getDay();
+        t.setDate(t.getDate() - (dow === 0 ? 6 : dow - 1));
+        return t;
+    }
+    function addD(d,n) { const t=new Date(d); t.setDate(t.getDate()+n); return t; }
+    function fmtShort(ds) { return new Date(ds+'T12:00').toLocaleDateString('es-ES',{day:'numeric',month:'short'}); }
+    function fmtMed(ds)   { return new Date(ds+'T12:00').toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long'}); }
+    function fmtDow(ds)   { return new Date(ds+'T12:00').toLocaleDateString('es-ES',{weekday:'short'}).toUpperCase(); }
+    function whoopCls(r)  { if(!r) return 'n'; return r>=67?'g':r>=50?'a':'r'; }
+    function parseMins(s) {
+        if(!s) return null;
+            s = String(s).replace(/[~'"]/g,'');
+        const m = s.match(/(\d+)[':.](\d+)/);
+        if(m) return parseInt(m[1])*60+parseInt(m[2]);
+            const n = parseFloat(s); return isNaN(n)?null:n;
+    }
+    function capitalize(s) { return s.charAt(0).toUpperCase()+s.slice(1); }
+
+    let currentWeek = monday(new Date());
+    let selectedDay = null;
+    let histFilter  = 'Todos';
+
+    const SECTION_NAMES = {
+        hoy: 'Hoy',
+        semana: 'Semana',
+        plan: 'Plan',
+        historial: 'Historial',
+        splits: 'Tests',
+    };
+
+    function nav(id, el) {
+        document.querySelectorAll('.sec').forEach(s => s.classList.remove('on'));
+        document.querySelectorAll('.bntab').forEach(t => t.classList.remove('on'));
+        document.getElementById('s-'+id).classList.add('on');
+        el.classList.add('on');
+        document.getElementById('top-sub').textContent = SECTION_NAMES[id] || '';
+        if(id==='hoy')      renderHoy();
+            if(id==='semana')   renderWeek();
+                if(id==='plan')     renderPlan();
+                    if(id==='historial') renderHistorial();
+                        if(id==='splits')   renderSplits();
+                            window.scrollTo(0,0);
+    }
+
+    function renderHoy() {
+        const wrap = document.getElementById('hoy-wrap');
+        const s = SESSIONS.find(x => x.date === TODAY);
+        const dow = new Date().getDay();
+        const sc = SCHEDULE[dow] || {};
+        const now = new Date();
+        const fase = FASES.find(f => now >= new Date(f.start) && now <= new Date(f.end)) || null;
+        const dateStr = capitalize(new Date(TODAY+'T12:00').toLocaleDateString('es-ES', {
+              weekday:'long', day:'numeric', month:'long'
+        }));
+        let phaseHtml = '';
+        if(fase) {
+              phaseHtml = '<div class="hoy-phase-strip"><div class="hoy-phase-k">Fase '+fase.num+' activa<\/div><div class="hoy-phase-v"><b>'+fase.label+'<\/b> · '+fase.desc+'<\/div><\/div>';
+        }
+            if(!s) {
+                  if(sc.rest) {
+                          wrap.innerHTML = phaseHtml+'<div class="hoy-date">'+dateStr+'<\/div><div class="hoy-rest"><div class="hoy-rest-title">Descanso<\/div><div class="hoy-rest-sub">Recuperación activa. Sin sesión planificada.<\/div><\/div>';
+                  } else {
+                          wrap.innerHTML = phaseHtml+'<div class="hoy-date">'+dateStr+'<\/div><div class="hoy-title">'+(sc.type||'Sesión planificada')+'<\/div><div class="hoy-rest" style="padding:20px 0 0"><div class="hoy-rest-sub">No hay sesión registrada aún para hoy.<\/div><\/div>';
+                  }
+                  return;
+            }
+                const hasBlocks = (s.blocks||[]).some(b=>b.val);
+        const hasEx = (s.exercises||[]).length > 0;
+        const blocksHtml = hasBlocks ? '<div class="hoy-blocks">'+s.blocks.filter(b=>b.val).map(b=>'<div class="hoy-block"><div class="hoy-block-k">'+b.label+'<\/div><div class="hoy-block-v">'+b.val+'<\/div><\/div>').join('')+'<\/div>' : '';
+        const exHtml = hasEx ? '<div class="hoy-ex-label">Ejercicios<\/div><div class="hoy-ex-list"><div class="hoy-ex-row" style="border-bottom:1px solid var(--rule);padding-bottom:8px"><span class="hoy-ex-hd">Ejercicio<\/span><span class="hoy-ex-hd">Carga<\/span><span class="hoy-ex-hd">Reps<\/span><\/div>'+s.exercises.map(e=>'<div class="hoy-ex-row"><span class="hoy-ex-name">'+e.name+'<\/span><span class="hoy-ex-val">'+(e.load||'—')+'<\/span><span class="hoy-ex-val">'+(e.reps||'—')+'<\/span><\/div>').join('')+'<\/div>' : '';
+        const metaItems = [
+              s.duration ? '<div class="hoy-meta-item"><div class="hoy-meta-k">Duración<\/div><div class="hoy-meta-v">'+s.duration+'<\/div><\/div>' : '',
+              s.recovery ? '<div class="hoy-meta-item"><div class="hoy-meta-k">Recovery<\/div><div class="hoy-meta-v">'+s.recovery+'%<\/div><\/div>' : '',
+              s.hrv ? '<div class="hoy-meta-item"><div class="hoy-meta-k">HRV<\/div><div class="hoy-meta-v">'+s.hrv+' ms<\/div><\/div>' : '',
+              s.feel ? '<div class="hoy-meta-item"><div class="hoy-meta-k">Sensación<\/div><div class="hoy-meta-v">'+s.feel+'<\/div><\/div>' : '',
+            ].filter(Boolean).join('');
+        wrap.innerHTML = phaseHtml+'<div class="hoy-date">'+dateStr+'<\/div><div class="hoy-title">'+s.type+'<\/div><div class="hoy-badge">'+s.category+'<\/div>'+(metaItems?'<div class="hoy-meta">'+metaItems+'<\/div>':'')+blocksHtml+exHtml+(s.notes?'<div class="hoy-notes">'+s.notes+'<\/div>':'');
+    }
+
+    function shiftWk(dir) {
+        currentWeek = addD(currentWeek, dir * 7);
+        selectedDay = null;
+        renderWeek();
+    }
+
+    function renderWeek() {
+        const mon = new Date(currentWeek);
+        const sun = addD(mon, 6);
+        document.getElementById('wk-week-label').textContent = fmtShort(iso(mon)) + ' — ' + fmtShort(iso(sun));
+        const DLABELS = ['DOM','LUN','MAR','MIÉ','JUE','VIE','SÁB'];
+        let html = '';
+        for(let i = 0; i < 7; i++) {
+              const d = addD(mon, i);
+              const ds = iso(d);
+              const dow = d.getDay();
+              const sc = SCHEDULE[dow] || {};
+              const s = SESSIONS.find(x => x.date === ds);
+              const isTd = ds === TODAY;
+              const isSel = ds === selectedDay;
+              let cls = 'day-pill';
+              if(sc.isBox) cls += ' box';
+                    else if(sc.rest) cls += ' rest';
+                          if(isTd) cls += ' today';
+                                if(isSel) cls += ' selected';
+                                      const dotVisible = !!s;
+              html += '<div class="'+cls+'" onclick="selectDay(\''+ds+'\')" role="button" aria-label="'+DLABELS[dow]+' '+d.getDate()+'"><div class="dp-dow">'+DLABELS[dow]+'<\/div><div class="dp-num">'+d.getDate()+'<\/div><div class="dp-dot'+(dotVisible?'':' hidden')+'"><\/div><\/div>';
+        }
+        document.getElementById('wk-days').innerHTML = html;
+        renderDayDetail();
+        const now = new Date();
+        const fase = FASES.find(f => now >= new Date(f.start) && now <= new Date(f.end)) || FASES[0];
+        document.getElementById('fase-ctx').innerHTML = '<b>Fase '+fase.num+' — '+fase.label+'.<\/b> '+fase.desc;
+    }
+
+    function selectDay(ds) {
+        selectedDay = selectedDay === ds ? null : ds;
+        renderWeek();
+    }
+
+    function renderDayDetail() {
+        const el = document.getElementById('wk-detail');
+        const inn = document.getElementById('wd-inner');
+        if(!selectedDay) { el.classList.add('hidden'); return; }
+            const s = SESSIONS.find(x => x.date === selectedDay);
+        const dow = new Date(selectedDay+'T12:00').getDay();
+        const sc = SCHEDULE[dow] || {};
+        const hasBlocks = s && (s.blocks||[]).some(b=>b.val);
+        const hasEx = s && (s.exercises||[]).length > 0;
+        const blocksHtml = hasBlocks ? '<div class="wd-blocks">'+s.blocks.filter(b=>b.val).map(b=>'<div class="wd-block"><div class="wd-block-k">'+b.label+'<\/div><div class="wd-block-v">'+b.val+'<\/div><\/div>').join('')+'<\/div>' : '';
+        const exHtml = hasEx ? '<div class="wd-ex-grid"><div class="wd-ex-hd"><span>Ejercicio<\/span><span>Carga<\/span><span>Reps<\/span><\/div>'+s.exercises.map(e=>'<div class="wd-ex-row"><span>'+e.name+'<\/span><span>'+(e.load||'—')+'<\/span><span>'+(e.reps||'—')+'<\/span><\/div>').join('')+'<\/div>' : '';
+        if(!s) {
+              inn.innerHTML = '<div class="wd-header"><div><div class="wd-title">'+capitalize(fmtMed(selectedDay))+'<\/div><\/div><button class="wd-close" onclick="selectDay(\''+selectedDay+'\')" aria-label="Cerrar">×<\/button><\/div><div class="wd-no-session">'+(sc.rest?'Día de descanso.':(sc.type?sc.type+' · Sin sesión registrada.':'Sin sesión registrada.'))+'<\/div>';
+        } else {
+              const metaItems = [
+                      s.duration ? '<div class="wd-meta-item"><b>'+s.duration+'<\/b><\/div>' : '',
+                      s.recovery ? '<div class="wd-meta-item">Recovery <b>'+s.recovery+'%<\/b><\/div>' : '',
+                      s.hrv ? '<div class="wd-meta-item">HRV <b>'+s.hrv+' ms<\/b><\/div>' : '',
+                      s.rhr ? '<div class="wd-meta-item">FC reposo <b>'+s.rhr+' lpm<\/b><\/div>' : '',
+                      s.feel ? '<div class="wd-meta-item">Sensación <b>'+s.feel+'<\/b><\/div>' : '',
+                    ].filter(Boolean).join('');
+              inn.innerHTML = '<div class="wd-header"><div><div class="wd-title">'+capitalize(fmtMed(selectedDay))+'<\/div><\/div><div style="display:flex;align-items:center;gap:8px"><div class="wd-type">'+s.type+'<\/div><button class="wd-close" onclick="selectDay(\''+selectedDay+'\')" aria-label="Cerrar">×<\/button><\/div><\/div>'+(metaItems?'<div class="wd-meta">'+metaItems+'<\/div>':'')+blocksHtml+exHtml+(s.notes?'<div class="wd-notes">'+s.notes+'<\/div>':'');
+        }
+        el.classList.remove('hidden');
+    }
+
+    function renderPlan() {
+        const now = new Date();
+        document.getElementById('fase-strip').innerHTML = FASES.map(f => {
+              const s = new Date(f.start), e = new Date(f.end);
+              const pct = Math.round(Math.max(0, Math.min(1, (now-s)/(e-s))) * 100);
+              const isA = now >= s && now <= e;
+              return '<div class="fcard'+(isA?' act':'')+'"><div class="fnum-bg">'+f.num+'<\/div><div class="fk">Fase '+f.num+(isA?' · Activa':'')+'<\/div><div class="ftitle">'+f.label+'<\/div><div class="fdates">'+f.dates+'<\/div><div class="fprog"><div class="fprog-fill" style="width:'+pct+'%"><\/div><\/div><div class="fpct">'+pct+'% completada<\/div><\/div>';
+        }).join('');
+        document.getElementById('splits-ref').innerHTML = SPLITS_REF.map(s => '<div class="sr-cell'+(s.dim?' dim':'')+'"><div class="sr-name">'+s.name+'<\/div><div class="sr-now">'+s.now+'<\/div><div class="sr-obj">'+s.obj+'<\/div><div class="sr-gain">'+s.gain+'<\/div><\/div>').join('');
+        const withSecs = TEST_SPLITS.filter(s => s.totalSecs);
+        const best = withSecs.length ? Math.min(...withSecs.map(s => s.totalSecs)) : null;
+        const pct = best ? Math.min(100, Math.max(0, (1620-best)/180*100)) : 0;
+        document.getElementById('plan-goal-bar').style.width = pct + '%';
+        document.getElementById('plan-goal-pct').textContent = Math.round(pct) + '% hacia el objetivo';
+        document.getElementById('plan-tl').innerHTML = TIMELINE.map(t => '<div class="tl-row"><div class="tl-d'+(t.on?' on':'')+'">'+t.d+'<\/div><div class="tl-t">'+t.t+'<\/div><\/div>').join('');
+    }
+
+    function renderHistorial() {
+        const cats = ['Todos', ...new Set(SESSIONS.map(s => s.category).filter(Boolean))];
+        document.getElementById('hist-filters').innerHTML = cats.map(c => '<button class="filt-btn'+(c===histFilter?' on':'')+'" onclick="setFilt(\''+c+'\')">'+c+'<\/button>').join('');
+        const filtered = histFilter==='Todos' ? SESSIONS : SESSIONS.filter(s => s.category===histFilter);
+        const sorted = [...filtered].sort((a,b) => new Date(b.date)-new Date(a.date));
+        const el = document.getElementById('h-grid');
+        if(!sorted.length) { el.innerHTML='<div class="h-empty">Sin sesiones en esta categoría.<\/div>'; return; }
+            el.innerHTML = sorted.map(s => {
+                  const wc = whoopCls(s.recovery);
+                  const hasBlocks = (s.blocks||[]).some(b=>b.val);
+                  const hasEx = (s.exercises||[]).length>0;
+                  const recColor = wc==='g'?'var(--green)':wc==='a'?'var(--amber)':wc==='r'?'var(--red)':'var(--pale)';
+                  const blocksHtml = hasBlocks ? '<div class="h-splits">'+s.blocks.filter(b=>b.val).map(b=>'<div class="h-split"><div class="h-split-k">'+b.label+'<\/div><div class="h-split-v">'+b.val+'<\/div><\/div>').join('')+'<\/div>' : '';
+                  const exHtml = hasEx ? '<table class="h-ex-table">'+s.exercises.map(e=>'<tr><td>'+e.name+'<\/td><td>'+(e.load||'—')+'<\/td><td>'+(e.reps||'—')+'<\/td><\/tr>').join('')+'<\/table>' : '';
+                  return '<div class="h-card" id="hc-'+s.id+'"><div class="h-head" onclick="toggleH('+s.id+')"><div><div class="h-date">'+fmtShort(s.date)+'<\/div><div class="h-date-dow">'+fmtDow(s.date)+'<\/div><\/div><div><div class="h-type">'+(s.category||s.type)+'<\/div><div class="h-summary">'+s.summary+'<\/div><\/div><div class="h-right">'+(s.recovery?'<div class="h-rec" style="color:'+recColor+'">'+s.recovery+'%<\/div><div class="h-rec-lbl">recovery<\/div>':'')+'<\/div><\/div><div class="h-body" id="hb-'+s.id+'"><div class="h-body-grid">'+(s.duration?'<div><div class="h-data-k">Duración<\/div><div class="h-data-v">'+s.duration+'<\/div><\/div>':'')+(s.hrv?'<div><div class="h-data-k">HRV<\/div><div class="h-data-v">'+s.hrv+' ms<\/div><\/div>':'')+(s.rhr?'<div><div class="h-data-k">FC reposo<\/div><div class="h-data-v">'+s.rhr+' lpm<\/div><\/div>':'')+(s.feel?'<div><div class="h-data-k">Sensación<\/div><div class="h-data-v">'+s.feel+'<\/div><\/div>':'')+'<\/div>'+blocksHtml+exHtml+(s.notes?'<div class="h-notes">'+s.notes+'<\/div>':'')+'<\/div><\/div>';
+            }).join('');
+    }
+
+    function setFilt(cat) { histFilter = cat; renderHistorial(); }
+    function toggleH(id) { document.getElementById('hb-'+id)?.classList.toggle('open'); }
+
+    function renderSplits() {
+        const withSecs = TEST_SPLITS.filter(s => s.totalSecs);
+        const best = withSecs.length ? withSecs.reduce((b,s) => s.totalSecs < b.totalSecs ? s : b) : null;
+        const bestEl = document.getElementById('spl-best');
+        const bestSub = document.getElementById('spl-best-sub');
+        if(best) {
+              bestEl.textContent = best.total;
+              bestEl.classList.remove('dim');
+              bestSub.textContent = fmtShort(best.date);
+        }
+            const maxS = TEST_SPLITS.reduce((m,s) => Math.max(m, s.totalSecs||0), 0) || 1620;
+        const BLABELS = ['B1','B2','B3','B4','B5','B6'];
+        const sorted = [...TEST_SPLITS].sort((a,b) => new Date(b.date)-new Date(a.date));
+        const el = document.getElementById('spl-list');
+        if(!sorted.length) { el.innerHTML='<div class="spl-empty">Sin tests registrados.<\/div>'; return; }
+            el.innerHTML = sorted.map(s => {
+                  const isBest = best && s.id===best.id;
+                  const bars = (s.b||[]).map((v,i) => {
+                          const sec = parseMins(v); if(!sec) return '';
+                                  const h = Math.max(4, Math.round(sec/maxS*32));
+                          return '<div class="spl-bwrap"><div class="spl-bar" style="height:'+h+'px"><\/div><div class="spl-blbl">'+BLABELS[i]+'<\/div><\/div>';
+                  }).join('');
+                  return '<div class="spl-row'+(isBest?' best':'')+'"><div><div class="spl-d">'+fmtShort(s.date)+'<\/div><\/div><div class="spl-tot">'+s.total+'<\/div><div class="spl-bars">'+(bars||'—')+'<\/div>'+(s.notes?'<div class="spl-notes">'+s.notes+'<\/div>':'')+'<\/div>';
+            }).join('');
+    }
+
+    renderHoy();
+  </script>
+</body>
+</html>htm
+  </div></span></span>
+</body></style>
   <noscript>
     <style>#__bundler_loading { display: none; }</style>
     <div style="position:fixed;bottom:12px;left:12px;font:13px/1.4 -apple-system,BlinkMacSystemFont,sans-serif;color:#999;background:rgba(255,255,255,0.9);padding:6px 12px;border-radius:6px;box-shadow:0 1px 4px rgba(0,0,0,0.08);z-index:10000;">
