@@ -362,7 +362,33 @@ const SESSIONS_SEED=[
      {name:'Pino contra pared — última inversión',load:'',reps:'60 seg'},
    ],
    notes:"Tres días consecutivos de carga alta (lun Hyrox 5 est., mar AMRAP, mié 12 roldas). Papel del jueves: vaciar tensión, mantener movilidad articular y dejar el SNC listo para el viernes. Plantar izquierda: dos pasadas. Criterio WHOOP: Verde/Amarillo alto → A+B+C+D · Amarillo bajo → A+B+C · Rojo → solo A + 20' paseo."},
-];
+
+  {id:5,date:'2026-08-28',type:'Box · Hyrox potencia',category:'Hyrox',
+   summary:'Potencia Hyrox en Box. AMRAP de activación + fuerza progresiva por zonas (KB y discos ligeros) + condicionamiento EMOM 12 min. Carga explosiva controlada.',
+   recovery:null,hrv:null,rhr:null,feel:null,duration:'~60 min',
+   blocks:[
+     {label:'AMRAP 6 min',val:'200m carrera · peso muerto KB · criss cross · burpees+squat · jumping jacks'},
+     {label:'Fuerza progresiva · Zona 1',val:'9 min · DL doble KB + saltos pogo + saltos longitud · 1 min descanso'},
+     {label:'Fuerza progresiva · Zona 2',val:'9 min · discos ligeros · elevaciones hombro + reverse fly · 45\" descanso'},
+     {label:'Condicionamiento EMOM',val:'12 min · 4 ejercicios × 45\"'},
+   ],
+   exercises:[
+     {name:'AMRAP — Carrera',load:'',reps:'200m'},
+     {name:'AMRAP — Peso muerto KB',load:'',reps:'10'},
+     {name:'AMRAP — Criss cross floor touch',load:'',reps:'20'},
+     {name:'AMRAP — Burpees + sentadilla',load:'',reps:'10'},
+     {name:'AMRAP — Jumping jacks mixtos',load:'',reps:'20'},
+     {name:'Z1 · Peso muerto doble KB',load:'',reps:'5'},
+     {name:'Z1 · Saltos pogo',load:'',reps:'5'},
+     {name:'Z1 · Saltos de longitud',load:'',reps:'2'},
+     {name:'Z2 · Elevaciones hombro laterales + flexión codo',load:'discos ligeros',reps:'8'},
+     {name:'Z2 · Reverse fly',load:'discos ligeros',reps:'8'},
+     {name:'EMOM 1 — Balanceos KB',load:'',reps:'45\"'},
+     {name:'EMOM 2 — Push ups to alt. toe touch',load:'',reps:'45\"'},
+     {name:'EMOM 3 — Zancadas cara atrás doble mancuerna',load:'',reps:'45\"'},
+     {name:'EMOM 4 — Ski erg',load:'RPE9',reps:'45\"'},
+   ]
+  },];
 
 /* ── STORAGE ── */
 const LS_S='pauta.sessions.v2', LS_U='pauta.ics.urls', LS_E='pauta.ics.events', LS_T='pauta.ics.synced';
