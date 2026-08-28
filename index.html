@@ -185,7 +185,7 @@ footer p{font-size:var(--sz-label);color:var(--muted);letter-spacing:var(--tr-la
 
 <!-- HOY -->
 <div id="view-hoy" role="region" aria-labelledby="h-hoy">
-  <div class="sec"><h1 id="h-hoy">Hoy</h1><span class="meta" id="hoy-fecha"></span></div>
+  <div class="sec"><h1 id="h-hoy">Hoy</h1></div>
   <div class="hoy-top">
     <div>
       <div id="hoy-hl" class="hoy-hl"></div>
@@ -555,7 +555,6 @@ window.addEventListener('hashchange',()=>navigate(window.location.hash));
 function renderHoy(){
   const s=SESSIONS.find(x=>x.date===TODAY);
   const f=FASES.find(f=>TODAY>=f.start&&TODAY<=f.end)||null;
-  document.getElementById('hoy-fecha').textContent=fmtL(TODAY);
   const hl=document.getElementById('hoy-hl');
   hl.innerHTML=s?s.type.replace(/·\s*(.+)/,'· <em>$1</em>'):(f?`Fase <em>${f.num}</em>`:'<em>Sin sesión programada</em>');
   document.getElementById('hoy-sum').textContent=s?s.summary:'';
