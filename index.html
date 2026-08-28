@@ -205,7 +205,10 @@ footer p{font-size:var(--sz-label);color:var(--muted);letter-spacing:var(--tr-la
       </p>
       <div id="ics-url-list" class="ics-url-list"></div>
       <button class="btn-add" onclick="addIcsUrl()">＋ Añadir calendario</button>
-      <div><button class="btn sync-btn" onclick="syncICS()">Sincronizar ahora</button></div>
+      <div style="display:flex;gap:var(--sp-3);flex-wrap:wrap;align-items:center">
+        <button class="btn sync-btn" onclick="syncICS()">Sincronizar ahora</button>
+        <label class="btn-add" style="cursor:pointer;display:inline-flex;align-items:center;gap:4px">＋ Importar .ics<input type="file" accept=".ics" multiple style="display:none" onchange="importICSFiles(this.files)"></label>
+      </div>
       <div class="ics-status" id="ics-detail-status"></div>
     </div>
   </details>
@@ -485,6 +488,24 @@ async function syncICS(){
   const t=new Date().toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'});
   if(st)st.textContent=`${all.length} eventos · ${t}`;
   if(dt)dt.textContent=errs.length?`Sin acceso a ${errs.join(', ')} — intenta compartir el calendario de iCloud de nuevo`:`${ICS_URLS.filter(u=>u.trim()).length} calendario(s) leídos.`;
+  renderAgenda(TODAY,document.getElementById('hoy-agenda'));
+  if(currentView==='semana')renderWeekGrid();
+}
+async function importICSFiles(files){
+  const st=document.getElementById('ics-sync-status'),dt=document.getElementById('ics-detail-status');
+  if(!files||!files.length)return;
+  if(st)st.textContent='Importando…';
+  const all=[];
+  for(const file of files){
+    try{
+      const txt=await file.text();
+      if(txt.includes('BEGIN:VCALENDAR'))all.push(...parseICS(txt));
+    }catch{}
+  }
+  save(LS_E,all);save(LS_T,new Date().toISOString());
+  const t=new Date().toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'});
+  if(st)st.textContent=`${all.length} eventos · ${t}`;
+  if(dt)dt.textContent=`${all.length} evento(s) importados de ${files.length} archivo(s).`;
   renderAgenda(TODAY,document.getElementById('hoy-agenda'));
   if(currentView==='semana')renderWeekGrid();
 }
