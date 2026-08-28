@@ -452,12 +452,18 @@ function agendaFor(ds){
 
 /* ── ICS SYNC ── */
 let ICS_URLS=load(LS_U,[]);
-const ICS_PROXIES=[
-  hu=>hu,
-  hu=>`https://corsproxy.io/?${encodeURIComponent(hu)}`,
-  hu=>`https://api.allorigins.win/raw?url=${encodeURIComponent(hu)}`,
-  hu=>`https://thingproxy.freeboard.io/fetch/${hu}`
-];
+async function tryFetchICS(hu){
+  const hdrs={'Accept':'text/calendar,text/plain,*/*'};
+  try{
+    return await Promise.any([hu,`https://corsproxy.io/?${encodeURIComponent(hu)}`].map(async c=>{
+      const r=await fetch(c,{signal:AbortSignal.timeout(7000),headers:hdrs,cache:'no-store'});
+      if(!r.ok)throw new Error('http '+r.status);
+      const txt=await r.text();
+      if(!txt.includes('BEGIN:VCALENDAR'))throw new Error('not ical');
+      return txt;
+    }));
+  }catch{return null;}
+}
 async function syncICS(){
   const st=document.getElementById('ics-sync-status'),dt=document.getElementById('ics-detail-status');
   if(!ICS_URLS.filter(u=>u.trim()).length){
@@ -466,28 +472,22 @@ async function syncICS(){
     renderAgenda(TODAY,document.getElementById('hoy-agenda'));return;
   }
   if(st)st.textContent='Sincronizando…';
+  const results=await Promise.allSettled(
+    ICS_URLS.filter(u=>u.trim()).map(async url=>{
+      const hu=url.trim().replace(/^webcal:\/\//i,'https://');
+      const txt=await tryFetchICS(hu);
+      return{url,evts:txt?parseICS(txt):null};
+    })
+  );
   const all=[],errs=[];
-  const hdrs={'Accept':'text/calendar,text/plain,*/*'};
-  for(const url of ICS_URLS){
-    if(!url.trim())continue;
-    const hu=url.trim().replace(/^webcal:\/\//i,'https://');
-    let ok=false;
-    for(const mkUrl of ICS_PROXIES){
-      const c=mkUrl(hu);
-      try{
-        const r=await fetch(c,{signal:AbortSignal.timeout(12000),headers:hdrs,cache:'no-store'});
-        if(!r.ok)continue;
-        const txt=await r.text();
-        if(!txt.includes('BEGIN:VCALENDAR'))continue;
-        all.push(...parseICS(txt));ok=true;break;
-      }catch{}
-    }
-    if(!ok)errs.push(url.trim().slice(0,40)+'…');
+  for(const r of results){
+    if(r.status==='fulfilled'&&r.value.evts){all.push(...r.value.evts);}
+    else{errs.push((r.value?.url||'').trim().slice(0,40)+'…');}
   }
   save(LS_E,all);save(LS_T,new Date().toISOString());
   const t=new Date().toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'});
-  if(st)st.textContent=`${all.length} eventos · ${t}`;
-  if(dt)dt.textContent=errs.length?`Sin acceso a ${errs.join(', ')} — intenta compartir el calendario de iCloud de nuevo`:`${ICS_URLS.filter(u=>u.trim()).length} calendario(s) leídos.`;
+  if(st)st.textContent=all.length?`${all.length} eventos · ${t}`:'Sin eventos';
+  if(dt)dt.textContent=errs.length?`Sin acceso a ${errs.length} calendario(s) — usa Importar .ics`:`${ICS_URLS.filter(u=>u.trim()).length} calendario(s) leídos.`;
   renderAgenda(TODAY,document.getElementById('hoy-agenda'));
   if(currentView==='semana')renderWeekGrid();
 }
