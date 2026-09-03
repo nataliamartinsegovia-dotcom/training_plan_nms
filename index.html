@@ -20,7 +20,7 @@ body{font-family:var(--sans);font-weight:300;background:var(--page);color:var(--
 .hdr-tab:hover{color:var(--ink)}
 .hdr-tab.on{color:var(--ink);border-bottom-color:var(--ink)}
 .hdr-date{font-size:11px;font-weight:300;color:var(--s700);letter-spacing:.04em;flex-shrink:0}
-@media(max-width:600px){.hdr-date{display:none}.hdr-tab{padding:0 8px;font-size:10px}.hdr-logo{font-size:20px}}
+@media(max-width:600px){.hdr-date{display:none}.hdr-tab{padding:0 8px;font-size:10px}.hdr-logo{font-size:20px}.footer{flex-direction:column;gap:8px;text-align:center}.footer-meta{text-align:center}}
 .sec{display:none}.sec.on{display:block}
 .wrap{max-width:1440px;margin:0 auto;padding:0 var(--px)}
 .s-bar{display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--s200);margin-bottom:0}
@@ -101,7 +101,7 @@ body{font-family:var(--sans);font-weight:300;background:var(--page);color:var(--
 .dc.sel{background:var(--ink)}
 .dc-hd{padding:10px 10px 8px;border-bottom:1px solid var(--s200);flex-shrink:0}
 .dc.sel .dc-hd{border-bottom-color:rgba(255,255,255,.08)}
-.dc-hd.box-hd{background:var(--ink)}
+.dc-hd.box-hd{border-top:3px solid var(--ink)}
 .dc-hd.rest-hd{background:var(--s100)}
 .dc-hd.today-hd{outline:2px solid var(--ink);outline-offset:-2px}
 .dc-dn{font-size:9px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--s700);margin-bottom:3px}
@@ -221,6 +221,7 @@ body{font-family:var(--sans);font-weight:300;background:var(--page);color:var(--
       <a class="hdr-tab" href="#" onclick="nav('semana',this);return false">Semana</a>
       <a class="hdr-tab" href="#" onclick="nav('historial',this);return false">Historial</a>
       <a class="hdr-tab" href="#" onclick="nav('tests',this);return false">Tests</a>
+      <a class="hdr-tab" href="#" onclick="nav('hoy',this);return false">Hoy</a>
     </nav>
     <div class="hdr-date" id="hdr-date"></div>
   </div>
@@ -299,6 +300,7 @@ body{font-family:var(--sans);font-weight:300;background:var(--page);color:var(--
     <div class="spacer"></div>
   </div>
 </section>
+<section id="s-hoy" class="sec"><div class="wrap" id="hoy-inner"></div></section>
 
 <footer class="footer">
   <div class="footer-logo">PAUTA</div>
@@ -446,6 +448,7 @@ function nav(id,el){
   if(id==='semana')renderWk();
   if(id==='historial')renderHist();
   if(id==='tests')renderTests();
+  if(id==='hoy')renderHoy();
   window.scrollTo(0,0);
 }
 
@@ -574,6 +577,30 @@ function renderTests(){
       ${s.notes?`<div class="t-notes">${s.notes}</div>`:''}
     </div>`;
   }).join('');
+}
+function renderHoy(){
+  const s=SESSIONS.find(x=>x.date===TODAY);
+  const sc=SCHEDULE[new Date(TODAY+'T12:00:00').getDay()]||{};
+  let h='<div style="padding:40px var(--px) 60px">'
+    +'<h2 style="font-family:var(--serif);font-size:clamp(22px,4vw,36px);margin:0 0 6px">'+TODAY+'</h2>'
+    +'<p style="margin:0 0 28px;color:var(--s500);letter-spacing:.1em;text-transform:uppercase;font-size:11px">'+(sc.label||'')+' &middot; '+(sc.type||'&mdash;')+'</p>';
+  if(s){
+    h+='<div style="background:var(--s100);border-radius:10px;padding:20px 24px;margin-bottom:16px">'
+      +'<div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--s500);margin-bottom:4px">'+(s.cat||'')+'</div>'
+      +'<div style="font-size:15px;font-weight:500;color:var(--ink);margin-bottom:6px">'+s.type+'</div>'
+      +'<div style="font-size:13px;color:var(--s700)">'+s.sum+'</div>';
+    if(s.dur)h+='<div style="margin-top:10px;font-size:12px;color:var(--s500)">⏱ '+s.dur+' min</div>';
+    h+='</div>';
+    if(s.blocks&&s.blocks.length){
+      h+='<h3 style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--s500);margin:24px 0 10px">Bloques</h3>';
+      s.blocks.forEach(b=>{h+='<div style="border-left:3px solid var(--ink);padding:8px 14px;margin-bottom:8px;font-size:13px">'+b+'</div>';});
+    }
+    if(s.notes)h+='<p style="margin-top:16px;font-size:13px;color:var(--s500)">'+s.notes+'</p>';
+  }else{
+    h+='<p style="color:var(--s500);font-size:14px;padding:20px 0">Sin sesión registrada para hoy.</p>';
+  }
+  h+='</div>';
+  document.getElementById('hoy-inner').innerHTML=h;
 }
 
 const now=new Date();
