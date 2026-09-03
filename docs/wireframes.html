@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pauta — Wireframes · v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --warm-0:   #FFFFFF;
+  --warm-50:  #FAF8F5;
+  --warm-100: #F4F1EB;
+  --warm-200: #E3DED4;
+  --warm-300: #D2CCBF;
+  --warm-400: #B3AC9E;
+  --warm-500: #8A8274;
+  --warm-700: #6E6759;
+  --warm-800: #555047;
+  --warm-900: #17140F;
+
+  --page:           var(--warm-50);
+  --surface:        var(--warm-0);
+  --surface-sunken: var(--warm-100);
+  --text-primary:   var(--warm-900);
+  --text-secondary: var(--warm-800);
+  --text-muted:     var(--warm-700);
+  --line:           var(--warm-200);
+  --line-strong:    var(--warm-300);
+  --line-ink:       var(--warm-900);
+
+  --font-didone: 'Bodoni Moda', Didot, Georgia, serif;
+  --font-geo:    'Jost', 'Futura', system-ui, sans-serif;
+
+  --sz-display-3: clamp(23px, 2.6vw, 30px);
+  --sz-figure:    clamp(26px, 3vw, 40px);
+  --sz-body:      14px;
+  --sz-label:     12px;
+
+  --sp-2: 8px;  --sp-3: 14px; --sp-4: 22px;
+  --sp-5: 34px; --sp-6: 52px;
+  --hair: 1px;
+  --gutter: clamp(18px, 3.4vw, 34px);
+  --mast-h: 62px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--warm-200);
+  font-family: var(--font-geo);
+  font-weight: 300;
+  color: var(--text-primary);
+  padding: var(--sp-6) var(--gutter);
+}
+
+.portada {
+  max-width: 1440px;
+  margin: 0 auto var(--sp-6);
+  padding-bottom: var(--sp-5);
+  border-bottom: var(--hair) solid var(--line-ink);
+}
+.portada-titulo {
+  font-family: var(--font-didone);
+  font-size: clamp(30px, 4vw, 50px);
+  letter-spacing: .34em;
+  text-indent: .34em;
+  text-align: justify;
+  line-height: 1.04;
+}
+.portada-titulo::after { content: ''; display: inline-block; width: 100%; }
+.portada-sub {
+  margin-top: var(--sp-3);
+  font-size: var(--sz-label);
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.grid {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: var(--sp-5);
+}
+
+.frame {
+  background: var(--page);
+  border: var(--hair) solid var(--line-strong);
+  display: flex;
+  flex-direction: column;
+}
+.frame-label {
+  padding: var(--sp-3) var(--sp-4);
+  border-bottom: var(--hair) solid var(--line-ink);
+  font-size: var(--sz-label);
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.frame-label b { color: var(--text-primary); font-weight: 400; }
+.frame-body { flex: 1; }
+
+.mast {
+  height: var(--mast-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--sp-4);
+  border-bottom: var(--hair) solid var(--line-ink);
+}
+.mast-mark {
+  font-family: var(--font-didone);
+  font-size: 26px;
+  letter-spacing: .34em;
+  text-indent: .34em;
+  font-weight: 400;
+}
+.mast-nav {
+  display: flex;
+  gap: var(--sp-4);
+  list-style: none;
+  font-size: var(--sz-label);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.mast-nav .on {
+  color: var(--text-primary);
+  padding-bottom: 2px;
+  border-bottom: var(--hair) solid var(--line-ink);
+}
+.mast-date {
+  font-size: var(--sz-label);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.sbar {
+  padding: var(--sp-3) var(--sp-4);
+  border-top: var(--hair) solid var(--line-ink);
+  border-bottom: var(--hair) solid var(--line-ink);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.sbar-title {
+  font-size: var(--sz-label);
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+.sbar-meta {
+  font-size: var(--sz-label);
+  letter-spacing: .1em;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.content { padding: var(--sp-4); }
+
+.hoy-title {
+  font-family: var(--font-didone);
+  font-size: clamp(30px, 5vw, 52px);
+  line-height: 1.04;
+  margin-bottom: var(--sp-2);
+}
+.hoy-title em { font-style: italic; color: var(--text-secondary); }
+.hoy-sub {
+  font-size: var(--sz-label);
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: var(--sp-5);
+}
+
+.strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: var(--hair) solid var(--line-ink);
+  margin-bottom: var(--sp-5);
+}
+.strip-cell {
+  padding: var(--sp-3) 0;
+  border-right: var(--hair) solid var(--line);
+}
+.strip-cell:last-child { border-right: 0; }
+.strip-cell + .strip-cell { padding-left: var(--sp-3); }
+.strip-lab {
+  font-size: var(--sz-label);
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: var(--sp-2);
+}
+.strip-val {
+  font-family: var(--font-didone);
+  font-size: clamp(23px, 3vw, 32px);
+  line-height: 1.0;
+}
+
+.week-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  border-top: var(--hair) solid var(--line-ink);
+}
+.day-cell {
+  padding: var(--sp-3) var(--sp-2);
+  border-right: var(--hair) solid var(--line);
+  border-bottom: var(--hair) solid var(--line);
+  min-height: 90px;
+}
+.day-cell:nth-child(7n) { border-right: 0; }
+.day-cell.today { background: var(--warm-0); }
+.day-head {
+  font-size: var(--sz-label);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: var(--sp-2);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.day-num {
+  font-family: var(--font-didone);
+  font-size: clamp(23px, 3vw, 32px);
+  line-height: 1.0;
+  margin-bottom: var(--sp-2);
+}
+.day-type {
+  font-size: var(--sz-label);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.day-sum {
+  font-size: 11px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-top: var(--sp-2);
+}
+
+.phases {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: var(--hair) solid var(--line-ink);
+  margin-bottom: var(--sp-4);
+}
+.phase-cell {
+  padding: var(--sp-4) var(--sp-3);
+  border-right: var(--hair) solid var(--line);
+}
+.phase-cell:last-child { border-right: 0; }
+.phase-cell.active { background: var(--warm-0); }
+.phase-num {
+  font-family: var(--font-didone);
+  font-size: clamp(23px, 3vw, 36px);
+  line-height: 1.0;
+  margin-bottom: var(--sp-2);
+}
+.phase-weeks {
+  font-size: var(--sz-label);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: var(--sp-3);
+}
+.week-marks { display: flex; gap: 3px; flex-wrap: wrap; }
+.wm { width: 14px; height: 4px; background: var(--line-strong); }
+.wm.done { background: var(--text-primary); }
+
+.hist-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: var(--sp-3) var(--sp-4);
+  border-bottom: var(--hair) solid var(--line);
+  cursor: pointer;
+}
+.hist-row:first-child { border-top: var(--hair) solid var(--line-ink); }
+.hist-date {
+  font-family: var(--font-didone);
+  font-size: var(--sz-display-3);
+  line-height: 1.0;
+}
+.hist-type {
+  font-size: var(--sz-label);
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.hist-arrow { font-size: 16px; color: var(--text-muted); }
+
+.test-big {
+  padding: var(--sp-5) var(--sp-4);
+  border-top: var(--hair) solid var(--line-ink);
+}
+.test-fig-label {
+  font-size: var(--sz-label);
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: var(--sp-3);
+}
+.test-fig {
+  font-family: var(--font-didone);
+  font-size: clamp(42px, 8vw, 88px);
+  line-height: 1.0;
+}
+.test-obj { margin-top: var(--sp-3); font-size: var(--sz-label); letter-spacing: .1em; color: var(--text-muted); }
+.test-table { width: 100%; border-collapse: collapse; margin-top: var(--sp-4); }
+.test-table th, .test-table td { text-align: left; padding: var(--sp-2) var(--sp-3); border-bottom: var(--hair) solid var(--line); font-size: var(--sz-body); }
+.test-table th { font-size: var(--sz-label); letter-spacing: .2em; text-transform: uppercase; color: var(--text-muted); font-weight: 400; border-bottom: var(--hair) solid var(--line-ink); }
+.test-table td:last-child { color: var(--text-muted); }
+
+.field { padding: var(--sp-4) 0; border-bottom: var(--hair) solid var(--line-ink); position: relative; }
+.field-lab { font-size: var(--sz-label); letter-spacing: .2em; text-transform: uppercase; color: var(--text-muted); margin-bottom: var(--sp-2); display: block; }
+.field-val { font-size: var(--sz-body); color: var(--text-primary); line-height: 1.76; }
+.field-placeholder { font-size: var(--sz-body); color: var(--warm-400); font-style: italic; }
+
+.search-wrap { padding: var(--sp-3) var(--sp-4); border-bottom: var(--hair) solid var(--line); }
+.search-input { width: 100%; border: 0; border-bottom: var(--hair) solid var(--line-ink); background: transparent; font-family: var(--font-geo); font-weight: 300; font-size: var(--sz-body); padding: var(--sp-2) 0; color: var(--text-primary); outline: 0; }
+
+.filters { display: flex; gap: var(--sp-3); padding: var(--sp-3) var(--sp-4); border-bottom: var(--hair) solid var(--line); overflow-x: auto; }
+.filter { font-size: var(--sz-label); letter-spacing: .2em; text-transform: uppercase; color: var(--text-muted); white-space: nowrap; padding-bottom: 2px; }
+.filter.on { color: var(--text-primary); border-bottom: var(--hair) solid var(--line-ink); }
+
+.empty { padding: var(--sp-6) var(--sp-4); text-align: center; font-family: var(--font-didone); font-style: italic; font-size: 23px; color: var(--warm-500); }
+
+.dock-frame { background: var(--page); border: var(--hair) solid var(--line-ink); width: 380px; max-width: 100%; }
+.dock-drag { height: 34px; border-bottom: var(--hair) solid var(--line-ink); display: flex; align-items: center; padding: 0 var(--sp-3); font-family: var(--font-didone); font-size: 14px; letter-spacing: .34em; text-indent: .34em; }
+
+.annotation { margin-top: var(--sp-2); font-size: 11px; letter-spacing: .05em; color: var(--warm-500); font-family: var(--font-geo); font-weight: 300; line-height: 1.6; }
+</style>
+</head>
+<body>
+
+<header class="portada">
+  <div class="portada-titulo">PAUTA</div>
+  <div style="border-top: 1px solid var(--line-ink); margin: 8px 0;"></div>
+  <div class="portada-sub">Wireframes v2 · 8 pantallas · Temporada 2026 — 2027</div>
+</header>
+
+<div class="grid">
+
+  <div class="frame">
+    <div class="frame-label"><b>01</b> <span>HOY</span></div>
+    <div class="frame-body">
+      <div class="mast">
+        <span class="mast-mark">PAUTA</span>
+        <ul class="mast-nav"><li class="on">Hoy</li><li>Semana</li><li>Plan</li><li>Historial</li><li>Tests</li></ul>
+        <span class="mast-date">Mié 3 Sep</span>
+      </div>
+      <div class="content">
+        <div class="hoy-title">Fuerza <em>general</em></div>
+        <div style="border-bottom: 1px solid var(--line-ink); margin-bottom: 8px;"></div>
+        <div class="hoy-sub">Miércoles · Semana 2 de 5 · Fase I</div>
+        <div class="strip">
+          <div class="strip-cell"><span class="strip-lab">Volumen</span><span class="strip-val">4 800</span></div>
+          <div class="strip-cell"><span class="strip-lab">Series</span><span class="strip-val">14</span></div>
+          <div class="strip-cell"><span class="strip-lab">Duración</span><span class="strip-val">62'</span></div>
+        </div>
+        <div class="sbar"><span class="sbar-title">Ejercicios</span><span class="sbar-meta">6 ejercicios</span></div>
+        <div style="padding: 14px 0;">
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--line);"><span style="font-size:14px;">Sentadilla</span><span style="font-size:12px;letter-spacing:.1em;color:var(--text-muted);">4 × 6 · 80 kg</span></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--line);"><span style="font-size:14px;">Press banca</span><span style="font-size:12px;letter-spacing:.1em;color:var(--text-muted);">4 × 6 · 60 kg</span></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--line);"><span style="font-size:14px;">Peso muerto</span><span style="font-size:12px;letter-spacing:.1em;color:var(--text-muted);">3 × 4 · 100 kg</span></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--line);color:var(--text-muted);"><span style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;">3 más →</span></div>
+        </div>
+        <div class="sbar"><span class="sbar-title">Notas</span></div>
+        <div style="padding:14px 0;font-size:14px;line-height:1.76;color:var(--text-secondary);">Buen rendimiento general. Sentadilla con cinturón.</div>
+      </div>
+    </div>
+    <div class="annotation" style="padding: 0 22px 14px;">↑ Sesión del día como titular · tira de 3 cifras · filete de tinta bajo la fecha</div>
+  </div>
+
+  <div class="frame">
+    <div class="frame-label"><b>02</b> <span>SEMANA</span></div>
+    <div class="frame-body">
+      <div class="mast">
+        <span class="mast-mark">PAUTA</span>
+        <ul class="mast-nav"><li>Hoy</li><li class="on">Semana</li><li>Plan</li><li>Historial</li><li>Tests</li></ul>
+        <span class="mast-date">2 — 8 Sep 2026</span>
+      </div>
+      <div class="sbar"><span class="sbar-title">Semana 2 de 5</span><span class="sbar-meta">Fase I · Septiembre</span></div>
+      <div class="week-grid">
+        <div class="day-cell"><div class="day-head"><span>L</span></div><div class="day-num">1</div><div class="day-type">Fuerza gral</div><div class="day-sum">Sentadilla 80kg</div></div>
+        <div class="day-cell"><div class="day-head"><span>M</span></div><div class="day-num">2</div><div class="day-type">Cardio</div><div class="day-sum">Remo 30' / 6500m</div></div>
+        <div class="day-cell today"><div class="day-head"><span>X</span><span style="font-size:10px;">HOY</span></div><div class="day-num">3</div><div class="day-type">Fuerza gral</div><div class="day-sum">62' · 4 800 kg</div></div>
+        <div class="day-cell"><div class="day-head"><span>J</span></div><div class="day-num">4</div><div class="day-type">Open</div><div class="day-sum">— Registrar</div></div>
+        <div class="day-cell"><div class="day-head"><span>V</span></div><div class="day-num">5</div><div class="day-type">Descanso</div></div>
+        <div class="day-cell"><div class="day-head"><span>S</span></div><div class="day-num">6</div><div class="day-type">Open</div><div class="day-sum">— Registrar</div></div>
+        <div class="day-cell" style="border-right:0;"><div class="day-head"><span>D</span></div><div class="day-num">7</div><div class="day-type">Descanso</div></div>
+      </div>
+    </div>
+    <div class="annotation" style="padding: 0 22px 14px;">↑ 7 columnas fijas · día activo con fondo claro · tipo en versalitas una línea</div>
+  </div>
+
+  <div class="frame">
+    <div class="frame-label"><b>03</b> <span>PLAN</span></div>
+    <div class="frame-body">
+      <div class="mast">
+        <span class="mast-mark">PAUTA</span>
+        <ul class="mast-nav"><li>Hoy</li><li>Semana</li><li class="on">Plan</li><li>Historial</li><li>Tests</li></ul>
+        <span class="mast-date">2026 — 2027</span>
+      </div>
+      <div class="sbar"><span class="sbar-title">Temporada 2026 — 2027</span><span class="sbar-meta">4 fases</span></div>
+      <div class="phases">
+        <div class="phase-cell active"><div class="phase-num">I</div><div class="phase-weeks">Semana 2 de 5</div><div class="week-marks"><div class="wm done"></div><div class="wm done"></div><div class="wm"></div><div class="wm"></div><div class="wm"></div></div></div>
+        <div class="phase-cell"><div class="phase-num">II</div><div class="phase-weeks">6 semanas</div><div class="week-marks"><div class="wm"></div><div class="wm"></div><div class="wm"></div><div class="wm"></div><div class="wm"></div><div class="wm"></div></div></div>
+        <div class="phase-cell"><div class="phase-num">III</div><div class="phase-weeks">4 semanas</div><div class="week-marks"><div class="wm"></div><div class="wm"></div><div class="wm"></div><div class="wm"></div></div></div>
+        <div class="phase-cell"><div class="phase-num">IV</div><div class="phase-weeks">4 semanas</div><div class="week-marks"><div class="wm"></div><div class="wm"></div><div class="wm"></div><div class="wm"></div></div></div>
+      </div>
+      <div class="sbar"><span class="sbar-title">Fase I · Detalle</span><span class="sbar-meta">Fuerza general</span></div>
+      <div class="content">
+        <div style="border-top:1px solid var(--line-ink);padding-top:14px;">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px 22px;">
+            <div><span style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted);display:block;margin-bottom:8px;">Objetivo</span><span style="font-family:var(--font-didone);font-size:23px;">Base de fuerza</span></div>
+            <div><span style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted);display:block;margin-bottom:8px;">Semanas</span><span style="font-family:var(--font-didone);font-size:23px;">5</span></div>
+            <div><span style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted);display:block;margin-bottom:8px;">Sesiones / semana</span><span style="font-family:var(--font-didone);font-size:23px;">4</span></div>
+            <div><span style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted);display:block;margin-bottom:8px;">Días</span><span style="font-size:14px;line-height:1.76;">L · X · J · S</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="annotation" style="padding: 0 22px 14px;">↑ 4 celdas de fase · marcas de semana en lugar de % · celda activa aclarada</div>
+  </div>
+
+  <div class="frame">
+    <div class="frame-label"><b>04</b> <span>HISTORIAL</span></div>
+    <div class="frame-body">
+      <div class="mast">
+        <span class="mast-mark">PAUTA</span>
+        <ul class="mast-nav"><li>Hoy</li><li>Semana</li><li>Plan</li><li class="on">Historial</li><li>Tests</li></ul>
+        <span class="mast-date">Sep 2026</span>
+      </div>
+      <div class="search-wrap"><input class="search-input" type="text" placeholder="Buscar ejercicio…" disabled></div>
+      <div class="filters"><span class="filter on">Todo</span><span class="filter">Fase I</span><span class="filter">Fuerza</span><span class="filter">Cardio</span><span class="filter">Open</span></div>
+      <div class="sbar"><span class="sbar-title">Septiembre 2026</span><span class="sbar-meta">6 sesiones</span></div>
+      <div class="hist-row"><div><div class="hist-date">3 sep</div><div class="hist-type">Fuerza general</div></div><div style="text-align:right;"><div style="font-family:var(--font-didone);font-size:23px;">62'</div><div class="hist-type">4 800 kg</div></div><span class="hist-arrow">+</span></div>
+      <div class="hist-row"><div><div class="hist-date">2 sep</div><div class="hist-type">Cardio</div></div><div style="text-align:right;"><div style="font-family:var(--font-didone);font-size:23px;">30'</div><div class="hist-type">6 500 m</div></div><span class="hist-arrow">+</span></div>
+      <div class="hist-row"><div><div class="hist-date">1 sep</div><div class="hist-type">Fuerza general</div></div><div style="text-align:right;"><div style="font-family:var(--font-didone);font-size:23px;">58'</div><div class="hist-type">4 400 kg</div></div><span class="hist-arrow">+</span></div>
+      <div style="background:var(--warm-0);border-bottom:1px solid var(--line);">
+        <div class="hist-row" style="background:var(--warm-0);"><div><div class="hist-date">29 ago</div><div class="hist-type">Open · AMRAP</div></div><div style="text-align:right;"><div style="font-family:var(--font-didone);font-size:23px;">40'</div></div><span class="hist-arrow">−</span></div>
+        <div style="padding:0 22px 14px;border-top:1px solid var(--line);">
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px;"><span>Burpees</span><span style="color:var(--text-muted);">50 reps</span></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px;"><span>Remo</span><span style="color:var(--text-muted);">1 000 m</span></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;font-size:13px;"><span>Wall ball</span><span style="color:var(--text-muted);">50 reps</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="annotation" style="padding: 0 22px 14px;">↑ Agrupación por mes · búsqueda · filtro con filete al activarse · fila plegable con recuento</div>
+  </div>
+
+  <div class="frame">
+    <div class="frame-label"><b>05</b> <span>TESTS</span></div>
+    <div class="frame-body">
+      <div class="mast">
+        <span class="mast-mark">PAUTA</span>
+        <ul class="mast-nav"><li>Hoy</li><li>Semana</li><li>Plan</li><li>Historial</li><li class="on">Tests</li></ul>
+        <span class="mast-date">Sep 2026</span>
+      </div>
+      <div class="sbar"><span class="sbar-title">Benchmark</span><span class="sbar-meta">3 tests</span></div>
+      <div class="test-big">
+        <div class="test-fig-label">Test open (50 BP + 1 km + 50 WB)</div>
+        <div class="test-fig">24'03<em style="font-family:var(--font-didone);font-style:italic;color:var(--text-secondary);">s</em></div>
+        <div class="test-obj">Objetivo 24'00s · Δ −3 s</div>
+      </div>
+      <div style="padding: 0 var(--sp-4);">
+        <table class="test-table"><thead><tr><th>Fecha</th><th>Resultado</th><th>Nota</th></tr></thead><tbody><tr><td>29 ago</td><td style="font-family:var(--font-didone);font-size:23px;">24'03s</td><td>Test F I</td></tr><tr><td>15 jul</td><td style="font-family:var(--font-didone);font-size:23px;">25'12s</td><td>Baseline</td></tr></tbody></table>
+        <div style="border-top:1px solid var(--line-ink);padding:22px 0 14px;">
+          <div class="test-fig-label">Sentadilla máx.</div>
+          <div style="font-family:var(--font-didone);font-size:clamp(30px,5vw,52px);">120 <span style="font-size:23px;color:var(--text-muted);">kg</span></div>
+          <div class="test-obj">Objetivo 130 kg</div>
+        </div>
+      </div>
+    </div>
+    <div class="annotation" style="padding: 0 22px 14px;">↑ Un solo registro: cifra a ancho completo · tabla histórica · sin semáforo</div>
+  </div>
+
+  <div class="frame">
+    <div class="frame-label"><b>06</b> <span>FORMULARIO · Registrar sesión</span></div>
+    <div class="frame-body">
+      <div class="mast">
+        <span class="mast-mark">PAUTA</span>
+        <ul class="mast-nav"><li class="on">Hoy</li><li>Semana</li><li>Plan</li><li>Historial</li><li>Tests</li></ul>
+        <span class="mast-date">Mié 3 Sep</span>
+      </div>
+      <div class="sbar"><span class="sbar-title">Registrar · 3 sep 2026</span><span class="sbar-meta">Fuerza general</span></div>
+      <div class="content">
+        <div class="field"><span class="field-lab">Tipo de sesión</span><span class="field-val">Fuerza general</span></div>
+        <div class="field"><span class="field-lab">Duración</span><span class="field-val">62 min</span></div>
+        <div class="field"><span class="field-lab">Volumen total</span><span class="field-val">4 800 kg</span></div>
+        <div class="field"><span class="field-lab">Ejercicios</span><span class="field-placeholder">Sentadilla 4×6 80 kg; Press banca…</span></div>
+        <div class="field"><span class="field-lab">Recuperación (1 – 5)</span><span class="field-val">4</span></div>
+        <div class="field"><span class="field-lab">Notas</span><span class="field-placeholder">Observaciones de la sesión…</span></div>
+        <div style="display:flex;gap:22px;padding-top:22px;border-top:1px solid var(--line-ink);margin-top:22px;">
+          <button style="flex:1;padding:14px;border:1px solid var(--line-ink);background:var(--line-ink);color:var(--page);font-family:var(--font-geo);font-size:12px;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;">Guardar</button>
+          <button style="flex:1;padding:14px;border:1px solid var(--line);background:transparent;font-family:var(--font-geo);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted);cursor:pointer;">Cancelar</button>
+        </div>
+        <div style="display:flex;gap:14px;padding-top:14px;">
+          <button style="font-family:var(--font-geo);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted);background:none;border:none;border-bottom:1px solid var(--line);padding-bottom:2px;cursor:pointer;">Exportar JSON</button>
+          <button style="font-family:var(--font-geo);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted);background:none;border:none;border-bottom:1px solid var(--line);padding-bottom:2px;cursor:pointer;">Importar</button>
+        </div>
+      </div>
+    </div>
+    <div class="annotation" style="padding: 0 22px 14px;">↑ Campos sin caja, solo filete de tinta inferior · guardar en localStorage · exporta JSON</div>
+  </div>
+
+  <div class="frame">
+    <div class="frame-label"><b>07</b> <span>ESTADO VACÍO</span></div>
+    <div class="frame-body">
+      <div class="mast">
+        <span class="mast-mark">PAUTA</span>
+        <ul class="mast-nav"><li>Hoy</li><li>Semana</li><li>Plan</li><li class="on">Historial</li><li>Tests</li></ul>
+        <span class="mast-date">Sep 2026</span>
+      </div>
+      <div class="sbar"><span class="sbar-title">Historial</span></div>
+      <div class="filters"><span class="filter on">Todo</span><span class="filter">Fase I</span><span class="filter">Fuerza</span></div>
+      <div class="empty">Sin sesiones aún</div>
+      <div style="border-top:1px solid var(--line-ink);margin:22px 22px 0;"></div>
+      <div class="sbar"><span class="sbar-title">Tests</span></div>
+      <div class="empty">Sin registros</div>
+    </div>
+    <div class="annotation" style="padding: 0 22px 14px;">↑ Estado vacío: Bodoni itálica 23 px en --warm-500 · centrado · sin iconos</div>
+  </div>
+
+  <div class="frame">
+    <div class="frame-label"><b>08</b> <span>DOCK · escritorio</span></div>
+    <div class="frame-body" style="padding:var(--sp-4);display:flex;flex-direction:column;gap:var(--sp-4);">
+      <div>
+        <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">Estado normal · 380 px</div>
+        <div class="dock-frame">
+          <div class="dock-drag">PAUTA</div>
+          <div style="padding:14px 14px 0;">
+            <div style="border-top:1px solid var(--line-ink);padding-top:14px;">
+              <span style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted);">HOY · FUERZA GENERAL</span>
+              <div style="font-family:var(--font-didone);font-size:clamp(23px,4vw,36px);margin-top:6px;margin-bottom:14px;">3 sep 2026</div>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line-ink);">
+            <div style="padding:10px;border-right:1px solid var(--line);"><span style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted);display:block;margin-bottom:4px;">Vol.</span><span style="font-family:var(--font-didone);font-size:23px;">4 800</span></div>
+            <div style="padding:10px;border-right:1px solid var(--line);"><span style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted);display:block;margin-bottom:4px;">Series</span><span style="font-family:var(--font-didone);font-size:23px;">14</span></div>
+            <div style="padding:10px;"><span style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted);display:block;margin-bottom:4px;">Dur.</span><span style="font-family:var(--font-didone);font-size:23px;">62'</span></div>
+          </div>
+          <div style="border-top:1px solid var(--line-ink);padding:10px 14px;">
+            <button style="width:100%;background:var(--line-ink);color:var(--page);border:0;padding:10px;font-family:var(--font-geo);font-size:11px;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;">Registrar sesión</button>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">Estado colapsado · 72 px</div>
+        <div class="dock-frame" style="width:72px;height:72px;display:flex;align-items:center;justify-content:center;">
+          <div style="writing-mode:vertical-lr;transform:rotate(180deg);font-family:var(--font-didone);font-size:14px;letter-spacing:.34em;text-indent:.34em;">P</div>
+        </div>
+      </div>
+    </div>
+    <div class="annotation" style="padding: 0 22px 14px;">↑ Sin cromo · 380 px · filete de tinta en lugar de sombra · barra de arrastre propia 34 px</div>
+  </div>
+
+</div>
+
+<footer style="max-width:1440px;margin:var(--sp-6) auto 0;border-top:1px solid var(--line-ink);padding-top:var(--sp-3);">
+  <div style="display:flex;justify-content:space-between;align-items:baseline;padding-bottom:var(--sp-5);">
+    <span style="font-size:var(--sz-label);letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted);">Pauta · Wireframes v2</span>
+    <span style="font-size:var(--sz-label);letter-spacing:.1em;color:var(--text-muted);">8 pantallas · Temporada 2026 — 2027</span>
+  </div>
+</footer>
+
+</body>
+</html>
