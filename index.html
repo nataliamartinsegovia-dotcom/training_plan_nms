@@ -103,7 +103,7 @@ body{font-family:var(--sans);font-weight:300;background:var(--page);color:var(--
 .dc.sel .dc-hd{border-bottom-color:rgba(255,255,255,.08)}
 .dc-hd.box-hd{border-top:3px solid var(--ink)}
 .dc-hd.rest-hd{background:var(--s100)}
-.dc-hd.today-hd{outline:2px solid var(--ink);outline-offset:-2px}
+
 .dc-dn{font-size:9px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--s700);margin-bottom:3px}
 .dc-hd.box-hd .dc-dn,.dc.sel .dc-dn{color:rgba(250,248,245,.35)}
 .dc-num{font-family:var(--serif);font-size:22px;line-height:1;color:var(--ink)}
@@ -507,7 +507,7 @@ function renderWk(){
     let hdCls='dc-hd';
     if(sc.box)hdCls+=' box-hd';
     else if(sc.rest)hdCls+=' rest-hd';
-    if(isTd)hdCls+=' today-hd';
+    
     let body='';
     if(s){
       body=`<div class="dc-tag">${s.type}</div><div class="dc-sum">${s.sum}</div><div class="dc-dot"></div>`;
