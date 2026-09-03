@@ -131,9 +131,9 @@ body{font-family:var(--sans);font-weight:300;background:var(--page);color:var(--
 .dd-meta-item{font-size:13px;font-weight:300;color:var(--s700)}
 .dd-meta-item b{font-weight:500;color:var(--ink)}
 .dd-blocks{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
-.dd-block{background:var(--ink);padding:10px 14px;flex:1;min-width:100px}
-.dd-block-k{font-size:8px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:rgba(250,248,245,.3);margin-bottom:3px}
-.dd-block-v{font-family:var(--sans);font-weight:400;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--page)}
+.dd-block{background:var(--s100);border:1px solid var(--s200);padding:10px 14px;flex:1;min-width:100px}
+.dd-block-k{font-size:8px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--s700);margin-bottom:3px}
+.dd-block-v{font-family:var(--sans);font-weight:400;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
 .dd-ex-wrap{margin-bottom:14px}
 .dd-ex-head{display:grid;grid-template-columns:1fr 80px 80px;gap:0 16px;padding:7px 0;border-bottom:1px solid var(--ink)}
 .dd-ex-head span{font-size:9px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--s700)}
@@ -165,9 +165,9 @@ body{font-family:var(--sans);font-weight:300;background:var(--page);color:var(--
 .h-data-k{font-size:9px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--s700);margin-bottom:3px}
 .h-data-v{font-family:var(--serif);font-size:18px;color:var(--ink)}
 .h-blocks{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:12px}
-.h-block{background:var(--ink);padding:8px 12px;flex:1;min-width:90px}
-.h-block-k{font-size:8px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:rgba(250,248,245,.3);margin-bottom:3px}
-.h-block-v{font-family:var(--sans);font-weight:400;font-size:12px;letter-spacing:.04em;color:var(--page)}
+.h-block{background:var(--s100);border:1px solid var(--s200);padding:8px 12px;flex:1;min-width:90px}
+.h-block-k{font-size:8px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--s700);margin-bottom:3px}
+.h-block-v{font-family:var(--sans);font-weight:400;font-size:12px;letter-spacing:.04em;color:var(--ink)}
 .h-ex-t{width:100%;border-collapse:collapse}
 .h-ex-t th{font-size:9px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--s700);text-align:left;padding:5px 0;border-bottom:1px solid var(--ink)}
 .h-ex-t td{font-size:13px;font-weight:300;padding:8px 0;border-bottom:1px solid var(--s200);color:var(--s700);vertical-align:middle}
@@ -217,17 +217,17 @@ body{font-family:var(--sans);font-weight:300;background:var(--page);color:var(--
   <div class="hdr-in">
     <div class="hdr-logo">PAUTA</div>
     <nav class="hdr-nav">
-      <a class="hdr-tab on" href="#" onclick="nav('plan',this);return false">Plan</a>
+      <a class="hdr-tab" href="#" onclick="nav('plan',this);return false">Plan</a>
       <a class="hdr-tab" href="#" onclick="nav('semana',this);return false">Semana</a>
       <a class="hdr-tab" href="#" onclick="nav('historial',this);return false">Historial</a>
       <a class="hdr-tab" href="#" onclick="nav('tests',this);return false">Tests</a>
-      <a class="hdr-tab" href="#" onclick="nav('hoy',this);return false">Hoy</a>
+      <a class="hdr-tab on" href="#" onclick="nav('hoy',this);return false">Hoy</a>
     </nav>
     <div class="hdr-date" id="hdr-date"></div>
   </div>
 </header>
 
-<section class="sec on" id="s-plan">
+<section class="sec" id="s-plan">
   <div class="wrap">
     <div class="hero">
       <div class="hero-eyebrow">Plan · Hyrox París · Abr 2027</div>
@@ -300,7 +300,7 @@ body{font-family:var(--sans);font-weight:300;background:var(--page);color:var(--
     <div class="spacer"></div>
   </div>
 </section>
-<section id="s-hoy" class="sec"><div class="wrap" id="hoy-inner"></div></section>
+<section id="s-hoy" class="sec on"><div class="wrap" id="hoy-inner"></div></section>
 
 <footer class="footer">
   <div class="footer-logo">PAUTA</div>
@@ -414,16 +414,39 @@ const SESSIONS=[
    notes:'Domingo post-test. Aeróbico y limpieza de lactato. Si FC sube, caminas.'},
   {id:8,date:'2026-09-01',type:'Box · METCON',cat:'CrossFit',
    sum:'Box martes. METCON / Work capacity. Artabros CrossFit.',
-   rec:null,hrv:null,rhr:null,feel:null,dur:null,
-   blocks:[],ex:[],notes:''},
+   rec:null,hrv:null,rhr:null,feel:null,dur:'~55 min',
+   blocks:[{k:'Calentamiento',v:'Movilidad + activación 10 min'},{k:'METCON principal',v:'AMRAP 20 min'},{k:'Acondicionamiento',v:'Work capacity específico Hyrox'}],
+   ex:[{n:'Wall balls',lo:'9 kg',r:'15 reps'},{n:'Burpees box jump',lo:'',r:'10 reps'},{n:'Remo',lo:'',r:'250m'},{n:'KB swings rusos',lo:'',r:'15 reps'}],
+   notes:'METCON martes Artabros CrossFit. Work capacity orientado a Hyrox.'},
   {id:9,date:'2026-09-02',type:'Box · Hyrox fuerza',cat:'Hyrox',
    sum:'Ahíbridos/Hyrox — fuerza específica. Estaciones funcionales.',
-   rec:null,hrv:null,rhr:null,feel:null,dur:null,
-   blocks:[],ex:[],notes:''},
+   rec:null,hrv:null,rhr:null,feel:null,dur:'~60 min',
+   blocks:[{k:'Bloque A · Fuerza funcional',v:'4 series · pausa 90"'},{k:'Bloque B · Estaciones Hyrox',v:'3 roldas · 12 min'},{k:'Finisher',v:'Core + movilidad 10 min'}],
+   ex:[{n:'Peso muerto con barra',lo:'',r:'4×5'},{n:'Remo ergómetro',lo:'RPE7',r:'3×500m'},{n:'Wall balls',lo:'9 kg',r:'3×20'},{n:'Zancadas frontales KB',lo:'',r:'3×10 c/pierna'},{n:'KB swings rusos',lo:'',r:'3×15'},{n:'Plancha anterior',lo:'',r:'3×45 seg'}],
+   notes:'Miércoles fuerza funcional Hyrox en Artabros. Estaciones funcionales específicas.'},
   {id:10,date:'2026-09-03',type:'Open solo',cat:'Open',
    sum:'Open solo · Descarga activa. Sin box.',
-   rec:null,hrv:null,rhr:null,feel:null,dur:null,
-   blocks:[],ex:[],notes:''}];
+   rec:null,hrv:null,rhr:null,feel:null,dur:'~40 min',
+   blocks:[{k:'Activación',v:'Movilidad + activación neural 10 min'},{k:'Trabajo principal',v:'Técnica sin fatiga · RPE5'}],
+   ex:[{n:'Movilidad articular',lo:'',r:'10 min'},{n:'Burpees técnica',lo:'ritmo bajo',r:'3×10'},{n:'Wall balls técnica',lo:'',r:'3×10'},{n:'Remo suave',lo:'Z1',r:'2×250m'}],
+   notes:'Jueves descarga activa. Sin carga, sin fatiga. Técnica y activación neural ligera.'},
+  {id:11,date:'2026-09-04',type:'Box · Hyrox potencia',cat:'Hyrox',
+   sum:'Viernes potencia. Ski erg + remo + burpees explosivos. Último estímulo antes del test.',
+   rec:null,hrv:null,rhr:null,feel:null,dur:'~55 min',
+   blocks:[{k:'Activación explosiva',v:'10 min'},{k:'Bloque potencia Hyrox',v:'5 intervals · pausa completa'},{k:'Cool-down',v:'10 min Z1'}],
+   ex:[{n:'Ski erg explosivo',lo:'RPE8-9',r:'5×200m · pausa 2 min'},{n:'Remo potencia',lo:'RPE8',r:'5×250m · pausa 90"'},{n:'Burpee broad jump',lo:'explosivo',r:'3×8'},{n:'Wall balls potencia',lo:'9 kg',r:'3×10 rápido'}],
+   notes:'Viernes pico de potencia antes del test del sábado. Corto, intenso, fresco. Evitar fatiga residual.'},
+  {id:12,date:'2026-09-05',type:'Test aislado',cat:'Test',
+   sum:"Test: 50 burpees → 1km remo → 50 WB. Objetivo 24'00".",
+   rec:null,hrv:null,rhr:null,feel:null,dur:"objetivo 24'",
+   blocks:[{k:'Pre-test · 15 min antes',v:'800m Z1 · KB swings · 5 burpees · plantar izq.'},{k:'Test',v:'50 burpees → 1km remo → 50 WB'},{k:'Objetivo',v:"24'00""}],
+   ex:[{n:'Pre — Trote Z1',lo:'Z1',r:'800m'},{n:'Pre — KB swings',lo:'ligero',r:'2×10'},{n:'Pre — Burpees activación',lo:'ritmo test',r:'2×5'},{n:'TEST — Burpees',lo:'ritmo constante',r:'50 · grupos 4-5'},{n:'TEST — Remo 1km',lo:'técnica piernas',r:'1km'},{n:'TEST — Wall balls',lo:'',r:'50 · grupos de 10'}],
+   notes:"Test objetivo 24'00". Semana 5 Fase I. Burpees con ritmo constante desde el primer rep."},
+  {id:13,date:'2026-09-06',type:'Descanso completo',cat:'Movilidad',
+   sum:'Descanso completo. Recuperación post-test.',
+   rec:null,hrv:null,rhr:null,feel:null,dur:'—',
+   blocks:[],ex:[],
+   notes:'Domingo descanso post-test. Movilidad pasiva opcional.'}];
 const TEST_SPLITS=[
   {id:1,date:'2026-08-22',total:"27'00\"",secs:1620,b:["4'00\"","~4'21\"","~3'23\"","~1'56\"","5'20\"","8'00\""],notes:"Test inicial. Entrada a WB a las 19'."},
 ];
@@ -443,7 +466,7 @@ function nav(id,el){
   document.querySelectorAll('.hdr-tab').forEach(t=>t.classList.remove('on'));
   document.getElementById('s-'+id).classList.add('on');
   el.classList.add('on');
-  if(id==='plan')renderPlan();
+  if(id==='plan')renderHoy();
   if(id==='semana')renderWk();
   if(id==='historial')renderHist();
   if(id==='tests')renderTests();
@@ -578,28 +601,33 @@ function renderTests(){
   }).join('');
 }
 function renderHoy(){
-  const s=SESSIONS.find(x=>x.date===TODAY);
-  const sc=SCH[new Date(TODAY+'T12:00:00').getDay()]||{};
-  let h='<div style="padding:40px var(--px) 60px">'
-    +'<h2 style="font-family:var(--serif);font-size:clamp(22px,4vw,36px);margin:0 0 6px">'+TODAY+'</h2>'
-    +'<p style="margin:0 0 28px;color:var(--s500);letter-spacing:.1em;text-transform:uppercase;font-size:11px">'+(sc.label||'')+' &middot; '+(sc.type||'&mdash;')+'</p>';
-  if(s){
-    h+='<div style="background:var(--s100);border-radius:10px;padding:20px 24px;margin-bottom:16px">'
-      +'<div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--s500);margin-bottom:4px">'+(s.cat||'')+'</div>'
-      +'<div style="font-size:15px;font-weight:500;color:var(--ink);margin-bottom:6px">'+s.type+'</div>'
-      +'<div style="font-size:13px;color:var(--s700)">'+s.sum+'</div>';
-    if(s.dur)h+='<div style="margin-top:10px;font-size:12px;color:var(--s500)">⏱ '+s.dur+' min</div>';
-    h+='</div>';
-    if(s.blocks&&s.blocks.length){
-      h+='<h3 style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--s500);margin:24px 0 10px">Bloques</h3>';
-      s.blocks.forEach(b=>{h+='<div style="border-left:3px solid var(--ink);padding:8px 14px;margin-bottom:8px;font-size:13px">'+b+'</div>';});
-    }
-    if(s.notes)h+='<p style="margin-top:16px;font-size:13px;color:var(--s500)">'+s.notes+'</p>';
-  }else{
-    h+='<p style="color:var(--s500);font-size:14px;padding:20px 0">Sin sesión registrada para hoy.</p>';
-  }
-  h+='</div>';
-  document.getElementById('hoy-inner').innerHTML=h;
+const s=SESSIONS.find(x=>x.date===TODAY);
+const sc=SCH[new Date(TODAY+'T12:00:00').getDay()]||{};
+let h='<div style="padding:40px var(--px) 60px">'
++'<h2 style="font-family:var(--serif);font-size:clamp(22px,4vw,36px);margin:0 0 6px">'+TODAY+'</h2>'
++'<p style="margin:0 0 28px;color:var(--s700);letter-spacing:.1em;text-transform:uppercase;font-size:11px">'+(sc.lb||'')+' &middot; '+(sc.type||'&mdash;')+'</p>';
+if(s){
+h+='<div style="background:var(--s100);border-radius:10px;padding:20px 24px;margin-bottom:16px">'
++'<div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--s700);margin-bottom:4px">'+(s.cat||'')+'</div>'
++'<div style="font-size:15px;font-weight:500;color:var(--ink);margin-bottom:6px">'+s.type+'</div>'
++'<div style="font-size:13px;color:var(--s700)">'+s.sum+'</div>';
+if(s.dur)h+='<div style="margin-top:10px;font-size:12px;color:var(--s700)">⏱ '+s.dur+'</div>';
+h+='</div>';
+if(s.blocks&&s.blocks.length){
+h+='<h3 style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--s700);margin:24px 0 10px">Bloques</h3>';
+s.blocks.forEach(b=>{h+='<div style="border-left:3px solid var(--ink);padding:8px 14px;margin-bottom:8px"><span style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--s700)">'+b.k+'</span><div style="font-size:13px;margin-top:3px">'+b.v+'</div></div>';});
+}
+if(s.ex&&s.ex.length){
+h+='<h3 style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--s700);margin:24px 0 10px">Ejercicios</h3><table style="width:100%;border-collapse:collapse"><thead><tr><th style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--s700);text-align:left;padding:5px 0;border-bottom:1px solid var(--ink)">Ejercicio</th><th style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--s700);text-align:left;padding:5px 0;border-bottom:1px solid var(--ink)">Carga</th><th style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--s700);text-align:left;padding:5px 0;border-bottom:1px solid var(--ink)">Reps</th></tr></thead><tbody>';
+s.ex.forEach(e=>{h+='<tr><td style="font-size:13px;padding:8px 0;border-bottom:1px solid var(--s200);color:var(--ink)">'+e.n+'</td><td style="font-size:12px;padding:8px 0;border-bottom:1px solid var(--s200);color:var(--s700)">'+(e.lo||'—')+'</td><td style="font-size:12px;font-weight:500;padding:8px 0;border-bottom:1px solid var(--s200);color:var(--ink)">'+(e.r||'—')+'</td></tr>';});
+h+='</tbody></table>';
+}
+if(s.notes)h+='<p style="margin-top:16px;font-size:13px;color:var(--s700);padding:10px 14px;background:var(--s100);border-left:2px solid var(--ink);line-height:1.6">'+s.notes+'</p>';
+}else{
+h+='<p style="color:var(--s700);font-size:14px;padding:20px 0">Sin sesión registrada para hoy.</p>';
+}
+h+='</div>';
+document.getElementById('hoy-inner').innerHTML=h;
 }
 
 const now=new Date();
