@@ -11,7 +11,7 @@
 :root{--ink:#17140F;--page:#FAF8F5;--s100:#F4F1EB;--s200:#E3DED4;--s300:#D2CCBF;--s700:#6E6759;--s800:#555047;--serif:'Bodoni Moda',Georgia,serif;--sans:'Jost',system-ui,sans-serif;--px:clamp(18px,3.4vw,34px)}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{font-size:16px;scroll-behavior:smooth}
-body{font-family:var(--sans);font-weight:300;background:var(--page);color:var(--ink);-webkit-font-smoothing:antialiased;padding-top:62px}
+body{font-family:var(--sans);font-weight:300;background:var(--page);color:var(--ink);-webkit-font-smoothing:antialiased;padding-top:62px;padding-bottom:50px}
 .hdr{position:fixed;top:0;left:0;right:0;z-index:100;height:62px;background:var(--page);box-shadow:0 1px 0 var(--s200);display:flex;align-items:center}
 .hdr-in{width:100%;max-width:1440px;margin:0 auto;padding:0 var(--px);display:flex;align-items:center;justify-content:space-between;gap:16px}
 .hdr-logo{font-family:var(--serif);font-size:26px;font-weight:400;letter-spacing:.34em;color:var(--ink)}
@@ -44,21 +44,21 @@ body{font-family:var(--sans);font-weight:300;background:var(--page);color:var(--
 @media(max-width:680px){.phases{grid-template-columns:1fr 1fr}}
 .ph{padding:20px 16px;border-right:1px solid var(--s200);position:relative;overflow:hidden;min-height:160px;display:flex;flex-direction:column;justify-content:space-between}
 .ph:last-child{border-right:none}
-.ph.act{background:var(--ink)}
+.ph.act{background:var(--s100);border-left:2px solid var(--ink)}
 .ph-ghost{font-family:var(--serif);font-weight:400;font-size:96px;line-height:.65;color:rgba(0,0,0,.04);position:absolute;bottom:-8px;right:4px;letter-spacing:-.04em;user-select:none;pointer-events:none}
-.ph.act .ph-ghost{color:rgba(255,255,255,.04)}
+.ph.act .ph-ghost{color:rgba(0,0,0,.04)}
 .ph-label{font-size:10px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:var(--s700);margin-bottom:5px}
-.ph.act .ph-label{color:rgba(250,248,245,.3)}
+.ph.act .ph-label{color:var(--s700)}
 .ph-title{font-family:var(--sans);font-weight:500;font-size:14px;letter-spacing:.02em;text-transform:uppercase;color:var(--ink);line-height:1.2}
-.ph.act .ph-title{color:var(--page)}
+.ph.act .ph-title{color:var(--ink)}
 .ph-dates{font-size:11px;font-weight:300;color:var(--s700);margin-top:4px}
-.ph.act .ph-dates{color:rgba(250,248,245,.3)}
+.ph.act .ph-dates{color:var(--s700)}
 .ph-prog{height:2px;background:var(--s200);margin-top:12px}
-.ph.act .ph-prog{background:rgba(255,255,255,.12)}
+.ph.act .ph-prog{background:var(--s200)}
 .ph-fill{height:100%;background:var(--ink)}
-.ph.act .ph-fill{background:var(--page)}
+.ph.act .ph-fill{background:var(--ink)}
 .ph-pct{font-size:10px;font-weight:300;color:var(--s700);margin-top:4px}
-.ph.act .ph-pct{color:rgba(250,248,245,.3)}
+.ph.act .ph-pct{color:var(--s700)}
 @media(max-width:680px){.ph{border-bottom:1px solid var(--s200)}.ph:nth-child(2n){border-right:none}}
 
 .sp-wrap{padding:18px 0 22px;border-bottom:1px solid var(--s200)}
@@ -207,9 +207,9 @@ body{font-family:var(--sans);font-weight:300;background:var(--page);color:var(--
 .t-notes{font-size:11px;font-weight:300;color:var(--s700);grid-column:1/-1;margin-top:-8px}
 .t-empty{padding:48px 0;font-size:13px;font-weight:300;color:var(--s700);text-align:center;font-style:italic}
 
-.footer{background:var(--ink);padding:16px var(--px);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
-.footer-logo{font-family:var(--serif);font-size:14px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:rgba(250,248,245,.3)}
-.footer-meta{font-size:11px;font-weight:300;color:rgba(250,248,245,.2);letter-spacing:.04em}
+.footer{background:var(--page);border-top:1px solid var(--ink);padding:12px var(--px);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;position:fixed;bottom:0;left:0;right:0;z-index:99}
+.footer-logo{font-family:var(--serif);font-size:14px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:var(--s700)}
+.footer-meta{font-size:11px;font-weight:300;color:var(--s700);letter-spacing:.04em}
 </style>
 </head>
 <body>
@@ -217,11 +217,11 @@ body{font-family:var(--sans);font-weight:300;background:var(--page);color:var(--
   <div class="hdr-in">
     <div class="hdr-logo">PAUTA</div>
     <nav class="hdr-nav">
+      <a class="hdr-tab on" href="#" onclick="nav('hoy',this);return false">Hoy</a>
       <a class="hdr-tab" href="#" onclick="nav('plan',this);return false">Plan</a>
       <a class="hdr-tab" href="#" onclick="nav('semana',this);return false">Semana</a>
       <a class="hdr-tab" href="#" onclick="nav('historial',this);return false">Historial</a>
       <a class="hdr-tab" href="#" onclick="nav('tests',this);return false">Tests</a>
-      <a class="hdr-tab on" href="#" onclick="nav('hoy',this);return false">Hoy</a>
     </nav>
     <div class="hdr-date" id="hdr-date"></div>
   </div>
