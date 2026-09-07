@@ -463,11 +463,14 @@ const SESSIONS=[
 ];
 const TEST_SPLITS=[
   {id:1,date:'2026-08-07',total:"27'00",secs:1620,
-   b:["4'00","BBJ","Zanc.","5'20","Flex.","8'00"],
-   notes:"Test oficial completo: 1km carrera + 50 Burpee Broad Jumps + 100 zancadas alternas + 1km remo + 30 flexiones liberando manos + 100 WB. Resultado: 27'00. Referencia Fase I."},
-  {id:2,date:'2026-09-05',total:"splits parciales",secs:null,
-   b:["3'50","5'00","2'41 (50 reps)","","",""],
-   notes:"Splits parciales 5 sep: burpees -31s, remo -20s vs ago. Test oficial completo a final septiembre."},
+   b:["~4'00","BBJ","Zanc.","5'20","Flex.","8'00"],
+   notes:"Test oficial completo 7 ago: 1km carrera + 50 BBJ + 100 zancadas + 1km remo + 30 flexiones liberando manos + 100 WB. Resultado: 27'00. Referencia Fase I."},
+  {id:2,date:'2026-08-22',total:"splits ref.",secs:null,
+   b:["~4'21\"","—","—","5'20\"","—","8'00\" (100 WB)"],
+   notes:"Referencia splits aislados 22 ago: burpees 50 → ~4'21\" · remo 1km → 5'20\" · WB 100 → 8'00\". Base de comparación Fase I."},
+  {id:3,date:'2026-09-05',total:"splits parciales",secs:null,
+   b:["3'50\"","5'00\"","2'41\" (50 WB)","","",""],
+   notes:"Splits 5 sep vs ref 22 ago: burpees 50 → 3'50\" (−31s) · remo 1km → 5'00\" (−20s) · WB 50 → 2'41\" (no comparable, ref era 100 reps). Test completo a final de septiembre."},
 ];
 
 const iso=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
