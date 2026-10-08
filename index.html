@@ -518,7 +518,54 @@ const SESSIONS=[
 {id:27,date:'2026-10-01',type:'Descanso',cat:'Descanso',sum:'JUE — Descanso completo. Recuperación entre sesión Ahyrox MIÉ y Hyrox VIE.',rec:null,hrv:null,rhr:null,feel:null,dur:null,blocks:[{k:'Tipo',v:'Descanso completo'},{k:'Nota',v:'Recuperación entre Ahyrox MIÉ y Hyrox VIE'}],ex:[],notes:'JUE 1 oct · Descanso completo.'},
 {id:28,date:'2026-10-02',type:'A60 · Parellas Artabros',cat:'CrossFit',sum:'CrossFit A60 en Artabros. Parellas: 3000/2700m remo + 150 thrusters 20/15 kg + 90 pes a barra. 28 min TC.',rec:null,hrv:null,rhr:null,feel:null,dur:'~45 min',blocks:[{k:'Formato',v:'Parellas'},{k:'Remo',v:'3000m rx / 2700m'},{k:'Thrusters',v:'150 reps 20/15 kg'},{k:'Pes a barra',v:'90 reps'},{k:'TC',v:'28 min'}],ex:[{n:'Remo',lo:'3000/2700m',r:'a partillar'},{n:'Thrusters',lo:'20/15 kg',r:'150 reps'},{n:'Pes a barra',lo:'-',r:'90 reps'}],notes:'CrossFit A60 parellas en lugar de Hyrox dirigida.'},
 {id:29,date:'2026-10-03',type:'Box · Fuerza Gymnásticos',cat:'CrossFit',sum:'SÁB — Fuerza upper body + gymnásticos. Sin carreira ni remo: conservar piernas para HPT test LUN.',rec:null,hrv:null,rhr:null,feel:null,dur:'~55 min',blocks:[{k:'A · Tracción',v:'4×6 Pull-ups strict progresando a kipping · descanso 90"'},{k:'B · Empuje',v:'4×8 Press military o push press · descanso 90"'},{k:'C · Unilateral',v:'3×10 KB row unilateral c/lado · descanso 60"'},{k:'Metcon · 12min AMRAP',v:'5 pull-ups + 10 push-ups + 15 air squats · RPE 7'},{k:'Core · 3 rondas',v:'Hollow hold 30" + Plank 30" + descanso 30"'}],ex:[{n:'Pull-ups',lo:'BW',r:'4×6'},{n:'Press military',lo:'moderado',r:'4×8'},{n:'KB row',lo:'unilateral',r:'3×10 c/lado'},{n:'AMRAP 12min',lo:'BW',r:'5+10+15'},{n:'Hollow hold + Plank',lo:'',r:'3×30"'}],notes:'SÁB 3 oct · Artabros. Upper body — piernas frescas para HPT LUN 5 oct.'},
-{id:30,date:'2026-10-04',type:'Carrera Z2',cat:'Carrera',sum:'DOM — Carrera suave zona 2. Recuperación activa. FC < 145 bpm · RPE 5-6.',rec:null,hrv:null,rhr:null,feel:null,dur:'40-50 min',blocks:[{k:'Tipo',v:'Carrera Z2 — recuperación activa'},{k:'FC objetivo',v:'< 145 bpm · RPE 5-6 máx'},{k:'Duración',v:'40-50 min'}],ex:[{n:'Carreira Z2',lo:'FC < 145',r:'40-50 min'}],notes:'DOM 4 oct · Carreira suave pre-HPT.'}
+{id:30,date:'2026-10-04',type:'Carrera Z2',cat:'Carrera',sum:'DOM — Carrera suave zona 2. Recuperación activa. FC < 145 bpm · RPE 5-6.',rec:null,hrv:null,rhr:null,feel:null,dur:'40-50 min',blocks:[{k:'Tipo',v:'Carrera Z2 — recuperación activa'},{k:'FC objetivo',v:'< 145 bpm · RPE 5-6 máx'},{k:'Duración',v:'40-50 min'}],ex:[{n:'Carreira Z2',lo:'FC < 145',r:'40-50 min'}],notes:'DOM 4 oct · Carreira suave pre-HPT.'},
+{id:31,date:'2026-10-05',type:'Descanso',cat:'Descanso',
+ sum:'LUN \u2014 Descanso completo por hemorragia intensa con la regla.',
+ rec:null,hrv:null,rhr:null,feel:null,dur:'\u2014',
+ blocks:[{k:'Motivo',v:'Hemorragia intensa \u00b7 regla'}],
+ ex:[],
+ notes:'LUN 5 oct \u00b7 Descanso completo. Hemorragia muy intensa. Sin actividad.'},
+{id:32,date:'2026-10-06',type:'Ahíbridos/Hyrox',cat:'Hyrox',
+ sum:"MAR \u2014 Ahíbridos/Hyrox Complete. 12 roldas 1'45\" on/15\" off: carreira RPE8 \u00b7 skierg RPE8 \u00b7 carreira RPE8 \u00b7 arrastre zorra 12m/zancadas. 3' descanso. Finisher 12 roldas 45\"/15\": goblet \u00b7 sprint remo RPE9 \u00b7 granxeiro \u00b7 hollow body jacks.",
+ rec:null,hrv:null,rhr:null,feel:null,dur:'~60 min',
+ blocks:[
+   {k:'Main \u00b7 12 roldas',v:"1'45\" on / 15\" off"},
+   {k:'#1',v:'Carreira RPE8'},{k:'#2',v:'Skierg RPE8'},{k:'#3',v:'Carreira RPE8'},
+   {k:'#4 P1',v:'Arrastre de zorra 12m'},{k:'#4 P2',v:'Zancadas alternas cara diante'},
+   {k:"3' Descanso",v:''},
+   {k:'Finisher \u00b7 12 roldas',v:'45" on / 15" off'},
+   {k:'#1',v:'Agachamento goblet con haltere'},{k:'#2',v:'Sprint de remo RPE9'},
+   {k:'#3',v:'Paseo do granxeiro dobre haltere'},{k:'#4',v:'Hollow body jacks'}
+ ],
+ ex:[
+   {n:'Carreira',lo:'RPE8',r:"1'45\" \u00d7 roldas main"},
+   {n:'Skierg',lo:'RPE8',r:"1'45\" \u00d7 roldas main"},
+   {n:'Arrastre de zorra',lo:'',r:'12m \u00d7 roldas main P1'},
+   {n:'Zancadas alternas',lo:'cara diante',r:'roldas main P2'},
+   {n:'Agachamento goblet',lo:'haltere',r:'45" \u00d7 roldas finisher'},
+   {n:'Sprint remo',lo:'RPE9',r:'45" \u00d7 roldas finisher'},
+   {n:'Paseo granxeiro',lo:'dobre haltere',r:'45" \u00d7 roldas finisher'},
+   {n:'Hollow body jacks',lo:'',r:'45" \u00d7 roldas finisher'}
+ ],
+ notes:"MAR 6 oct \u00b7 Artabros CrossFit \u00b7 Ahíbridos/Hyrox Complete. Main: 12 roldas 1'45\"/15\" (carreira RPE8 + skierg RPE8 + carreira RPE8 + arrastre zorra 12m/zancadas). 3' descanso. Finisher: 12 roldas 45\"/15\" (goblet haltere + sprint remo RPE9 + granxeiro dobre haltere + hollow body jacks)."},
+{id:33,date:'2026-10-08',type:'Box \u00b7 A60',cat:'CrossFit',
+ sum:'JUE \u2014 A60. 3 bloques 7min AMRAP \u00d7 3min descanso. B1: burpees con salto \u00e1 caixa. B2: 21 thrusters 35/25 + 21 cal remo. B3: 200m carreira + 2 subidas \u00e1 corda.',
+ rec:null,hrv:null,rhr:null,feel:null,dur:'~40 min',
+ blocks:[
+   {k:'B1 \u00b7 7min AMRAP',v:'Burpees con salto \u00e1 caixa'},
+   {k:'3min descanso',v:''},
+   {k:'B2 \u00b7 7min AMRAP',v:'21 Thrusters 35/25 + 21 Cal Remo'},
+   {k:'3min descanso',v:''},
+   {k:'B3 \u00b7 7min AMRAP',v:'200m Carreira + 2 Subidas \u00e1 corda'}
+ ],
+ ex:[
+   {n:'Burpees con salto \u00e1 caixa',lo:'',r:'AMRAP 7min'},
+   {n:'Thrusters',lo:'35/25 kg',r:'21 \u00d7 ronda'},
+   {n:'Cal Remo',lo:'',r:'21 cal \u00d7 ronda'},
+   {n:'Carreira',lo:'',r:'200m \u00d7 ronda'},
+   {n:'Subidas \u00e1 corda',lo:'',r:'2 \u00d7 ronda'}
+ ],
+ notes:'JUE 8 oct \u00b7 Artabros CrossFit A60. 3 AMRAP de 7min con 3min descanso. B1: burpees sal\u00f3n caj\u00f3n. B2: thrusters 35/25 + remo cal. B3: carreira + cuerda.'}
 
 ];
 const TEST_SPLITS=[
