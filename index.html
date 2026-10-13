@@ -752,7 +752,34 @@ function renderTests(){
   document.getElementById('t-prog').style.width=pct+'%';
   document.getElementById('t-pct').textContent=Math.round(pct)+'%';
   const maxS=TEST_SPLITS.reduce((m,s)=>Math.max(m,s.secs||0),0)||1620;
-  const BL=['B1','B2','B3','B4','B5','B6'];
+  const BL=['B1','B2','B3','B4','B5','B6'
+    {id:35,date:'2026-10-10',type:'Open Gym · Hyrox',cat:'Hyrox',
+     sum:"SAB — Open Gym Solo. Warm-up 10': 5' carreira suave + dinámica. Bloque A: 5×300m pace 3'42\"/km. Bloque B: Skierg 4×1' + Remo 4×1' RPE8. Bloque C: 4 roldas (15 flexiones liberando manos + 15 wall balls 6kg + 100m farmers carry 16kg c/mano).",
+     rec:null,hrv:null,rhr:null,feel:null,dur:'~70 min',
+     blocks:[
+      {k:"Warm-Up 10'",v:"5' carreira suave RPE4 · dinámica: skipping + talones a glúteos + leg swings + 4×60m progresivo"},
+      {k:"Bloque A · Carreira",v:"5 × 300m pace 3'40\"-3'45\"/km · ~66-68 seg/300m · descanso 90\" andando"},
+      {k:"Bloque B · Skierg",v:"4 × 1' · :30 descanso activo · RPE 8"},
+      {k:"Bloque B · Remo",v:"4 × 1' · :30 descanso activo · RPE 8"},
+      {k:"Bloque C · 4 roldas",v:"15 flexiones liberando manos + 15 wall balls 6kg + 100m farmers carry 16kg c/mano · descanso 90\" entre roldas"}
+     ],
+     ex:['Carreira','Skierg','Remo','Wall balls','Flexiones liberando manos','Farmers carry'],
+     notes:"SAB 10 oct · Artabros CrossFit · Open Gym Solo · trabaja 1km + estaciones Hyrox"},
+    {id:36,date:'2026-10-11',type:'Descanso',cat:'Descanso',
+     sum:"DOM — Día de descanso.",
+     rec:null,hrv:null,rhr:null,feel:null,dur:null,
+     blocks:[],
+     ex:[],
+     notes:"DOM 11 oct · Descanso"},
+    {id:37,date:'2026-10-12',type:'Carreira · 10km Z4',cat:'Running',
+     sum:"LUN — 10km carreira zona 4 sin apretar.",
+     rec:null,hrv:null,rhr:null,feel:null,dur:null,
+     blocks:[
+      {k:'10km · Zona 4',v:'Sin apretar · ritmo aeóbico sostenido'}
+     ],
+     ex:['Carreira'],
+     notes:"LUN 12 oct · 10km carreira zona 4 sin apretar"},
+  ];
   const el=document.getElementById('t-list');
   if(!TEST_SPLITS.length){el.innerHTML='<div class="t-empty">Sin tests registrados.</div>';return;}
   el.innerHTML=[...TEST_SPLITS].sort((a,b)=>new Date(b.date)-new Date(a.date)).map(s=>{
