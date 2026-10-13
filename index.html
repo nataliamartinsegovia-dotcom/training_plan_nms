@@ -605,7 +605,33 @@ const SESSIONS=[
   {n:'Marcha estacionaria',lo:'dobre KB',r:'20 × ZOA2 P1'},
   {n:'Burpee con flexión',lo:'+1/rolda',r:'ZOA2 P2'}
  ],
- notes:"VIE 9 oct · Artabros CrossFit · Forza Base + Capacidade Atlética. Warm-up AMRAP 5': 4+4 PAILS rails hombro + 6 bos días 2\" pausa + 4+4 peso morto rumano + 6 deadbug alternos + 4+4 press estritos. EMOM 9' upper: 12 flexions 30X1 · 10 press estrito B1 20X1 · 10 press estrito B2 20X1. Descanso 1'. EMOM 9' lower: 12 pontes isquio 2\" pausa · 10 KB tightrope 20X1 B1 · 10 KB tightrope 20X1 B2. Capacidade atlética 8\"/90\": ZOA1 (20 russian twist balón + 10 sit ups balón · superman raises) + ZOA2 (10 balanceos rusos + 20 marcha estacionaria dobre KB · burpee con flexión +1/rolda)."}
+ notes:"VIE 9 oct · Artabros CrossFit · Forza Base + Capacidade Atlética. Warm-up AMRAP 5': 4+4 PAILS rails hombro + 6 bos días 2\" pausa + 4+4 peso morto rumano + 6 deadbug alternos + 4+4 press estritos. EMOM 9' upper: 12 flexions 30X1 · 10 press estrito B1 20X1 · 10 press estrito B2 20X1. Descanso 1'. EMOM 9' lower: 12 pontes isquio 2\" pausa · 10 KB tightrope 20X1 B1 · 10 KB tightrope 20X1 B2. Capacidade atlética 8\"/90\": ZOA1 (20 russian twist balón + 10 sit ups balón · superman raises) + ZOA2 (10 balanceos rusos + 20 marcha estacionaria dobre KB · burpee con flexión +1/rolda)."},
+    {id:35,date:'2026-10-10',type:'Open Gym · Hyrox',cat:'Hyrox',
+     sum:"SAB — Open Gym Solo. Warm-up 10': 5' carreira suave + dinámica. Bloque A: 5×300m pace 3'42\"/km. Bloque B: Skierg 4×1' + Remo 4×1' RPE8. Bloque C: 4 roldas (15 flexiones liberando manos + 15 wall balls 6kg + 100m farmers carry 16kg c/mano).",
+     rec:null,hrv:null,rhr:null,feel:null,dur:'~70 min',
+     blocks:[
+      {k:"Warm-Up 10'",v:"5' carreira suave RPE4 · dinámica: skipping + talones a glúteos + leg swings + 4×60m progresivo"},
+      {k:"Bloque A · Carreira",v:"5 × 300m pace 3'40\"-3'45\"/km · ~66-68 seg/300m · descanso 90\" andando"},
+      {k:"Bloque B · Skierg",v:"4 × 1' · :30 descanso activo · RPE 8"},
+      {k:"Bloque B · Remo",v:"4 × 1' · :30 descanso activo · RPE 8"},
+      {k:"Bloque C · 4 roldas",v:"15 flexiones liberando manos + 15 wall balls 6kg + 100m farmers carry 16kg c/mano · descanso 90\" entre roldas"}
+     ],
+     ex:['Carreira','Skierg','Remo','Wall balls','Flexiones liberando manos','Farmers carry'],
+     notes:"SAB 10 oct · Artabros CrossFit · Open Gym Solo · trabaja 1km + estaciones Hyrox"},
+    {id:36,date:'2026-10-11',type:'Descanso',cat:'Descanso',
+     sum:"DOM — Día de descanso.",
+     rec:null,hrv:null,rhr:null,feel:null,dur:null,
+     blocks:[],
+     ex:[],
+     notes:"DOM 11 oct · Descanso"},
+    {id:37,date:'2026-10-12',type:'Carreira · 10km Z4',cat:'Running',
+     sum:"LUN — 10km carreira zona 4 sin apretar.",
+     rec:null,hrv:null,rhr:null,feel:null,dur:null,
+     blocks:[
+      {k:'10km · Zona 4',v:'Sin apretar · ritmo aeóbico sostenido'}
+     ],
+     ex:['Carreira'],
+     notes:"LUN 12 oct · 10km carreira zona 4 sin apretar"}
 
 ];
 const TEST_SPLITS=[
@@ -753,32 +779,6 @@ function renderTests(){
   document.getElementById('t-pct').textContent=Math.round(pct)+'%';
   const maxS=TEST_SPLITS.reduce((m,s)=>Math.max(m,s.secs||0),0)||1620;
   const BL=['B1','B2','B3','B4','B5','B6'
-    {id:35,date:'2026-10-10',type:'Open Gym · Hyrox',cat:'Hyrox',
-     sum:"SAB — Open Gym Solo. Warm-up 10': 5' carreira suave + dinámica. Bloque A: 5×300m pace 3'42\"/km. Bloque B: Skierg 4×1' + Remo 4×1' RPE8. Bloque C: 4 roldas (15 flexiones liberando manos + 15 wall balls 6kg + 100m farmers carry 16kg c/mano).",
-     rec:null,hrv:null,rhr:null,feel:null,dur:'~70 min',
-     blocks:[
-      {k:"Warm-Up 10'",v:"5' carreira suave RPE4 · dinámica: skipping + talones a glúteos + leg swings + 4×60m progresivo"},
-      {k:"Bloque A · Carreira",v:"5 × 300m pace 3'40\"-3'45\"/km · ~66-68 seg/300m · descanso 90\" andando"},
-      {k:"Bloque B · Skierg",v:"4 × 1' · :30 descanso activo · RPE 8"},
-      {k:"Bloque B · Remo",v:"4 × 1' · :30 descanso activo · RPE 8"},
-      {k:"Bloque C · 4 roldas",v:"15 flexiones liberando manos + 15 wall balls 6kg + 100m farmers carry 16kg c/mano · descanso 90\" entre roldas"}
-     ],
-     ex:['Carreira','Skierg','Remo','Wall balls','Flexiones liberando manos','Farmers carry'],
-     notes:"SAB 10 oct · Artabros CrossFit · Open Gym Solo · trabaja 1km + estaciones Hyrox"},
-    {id:36,date:'2026-10-11',type:'Descanso',cat:'Descanso',
-     sum:"DOM — Día de descanso.",
-     rec:null,hrv:null,rhr:null,feel:null,dur:null,
-     blocks:[],
-     ex:[],
-     notes:"DOM 11 oct · Descanso"},
-    {id:37,date:'2026-10-12',type:'Carreira · 10km Z4',cat:'Running',
-     sum:"LUN — 10km carreira zona 4 sin apretar.",
-     rec:null,hrv:null,rhr:null,feel:null,dur:null,
-     blocks:[
-      {k:'10km · Zona 4',v:'Sin apretar · ritmo aeóbico sostenido'}
-     ],
-     ex:['Carreira'],
-     notes:"LUN 12 oct · 10km carreira zona 4 sin apretar"},
   ];
   const el=document.getElementById('t-list');
   if(!TEST_SPLITS.length){el.innerHTML='<div class="t-empty">Sin tests registrados.</div>';return;}
