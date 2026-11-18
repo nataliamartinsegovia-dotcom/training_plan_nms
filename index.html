@@ -143,6 +143,9 @@ body{font-family:var(--sans);font-weight:300;background:var(--page);color:var(--
 .dd-ex-load,.dd-ex-reps{font-family:var(--sans);font-size:12px;font-weight:500;color:var(--s700);letter-spacing:.04em}
 .dd-ex-reps{color:var(--ink)}
 .dd-notes{padding:12px 14px;background:var(--s100);border-left:2px solid var(--ink);font-size:13px;font-weight:300;line-height:1.7;color:var(--s700)}
+.dd-sess-hdr{font-size:15px;font-weight:600;color:var(--accent);padding:10px 0 6px;border-bottom:1px solid var(--border);margin-bottom:10px;margin-top:4px;}
+.dd-sep{border:none;border-top:1px solid var(--border);margin:16px 0;}
+.dd-count{font-size:11px;background:var(--accent);color:#fff;border-radius:10px;padding:2px 7px;font-weight:700;margin-left:6px;}
 .fase-ctx{padding:14px 0;font-size:13px;font-weight:300;color:var(--s700);line-height:1.55;border-bottom:1px solid var(--s200)}
 .fase-ctx b{font-family:var(--sans);font-weight:500;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
 
@@ -900,22 +903,29 @@ function selDay(ds){selD=selD===ds?null:ds;renderWk();}
 function renderDD(){
   const el=document.getElementById('day-det'),inn=document.getElementById('dd-in');
   if(!selD){el.classList.remove('open');return;}
-  const s=SESSIONS.find(x=>x.date===selD);
-  if(!s){el.classList.remove('open');return;}
-  const bH=(s.blocks||[]).filter(b=>b.v).map(b=>`<div class="dd-block"><div class="dd-block-k">${b.k}</div><div class="dd-block-v">${b.v}</div></div>`).join('');
-  const exH=(s.ex||[]).map(e=>`<div class="dd-ex-row"><div class="dd-ex-name">${e.n}</div><div class="dd-ex-load">${e.lo||'—'}</div><div class="dd-ex-reps">${e.r||'—'}</div></div>`).join('');
-  const mi=[s.dur?`<span class="dd-meta-item">Duración <b>${s.dur}</b></span>`:'',s.rec?`<span class="dd-meta-item">Recovery <b>${s.rec}%</b></span>`:''].filter(Boolean).join('');
+  const ss=SESSIONS.filter(x=>x.date===selD);
+  if(!ss.length){el.classList.remove('open');return;}
+  const allSessHTML=ss.map((s,si)=>{
+    const bH=(s.blocks||[]).filter(b=>b.v).map(b=>`<div class="dd-block"><div class="dd-block-k">${b.k}</div><div class="dd-block-v">${b.v}</div></div>`).join('');
+    const exH=(s.ex||[]).map(e=>`<div class="dd-ex-row"><div class="dd-ex-name">${e.n}</div><div class="dd-ex-load">${e.lo||'—'}</div><div class="dd-ex-reps">${e.r||'—'}</div></div>`).join('');
+    const mi=[s.dur?`<span class="dd-meta-item">Duración <b>${s.dur}</b></span>`:'',s.rec?`<span class="dd-meta-item">Recovery <b>${s.rec}%</b></span>`:''].filter(Boolean).join('');
+    return (ss.length>1?'<div class="dd-sess-hdr">'+s.type+'</div>':'')+
+      (mi?'<div class="dd-meta">'+mi+'</div>':'')+
+      (bH?'<div class="dd-blocks">'+bH+'</div>':'')+
+      (exH?'<div class="dd-ex-wrap"><div class="dd-ex-head"><span>Ejercicio</span><span>Carga</span><span>Reps</span></div>'+exH+'</div>':'')+
+      (s.notes?'<div class="dd-notes">'+s.notes+'</div>':'')+
+      (si<ss.length-1?'<hr class="dd-sep">':'');
+  }).join('');
+  const dHdr=ss.length>1?'<div class="dd-count">'+ss.length+' entr.</div>':'';
   inn.innerHTML=`
     <div class="dd-hdr">
-      <div><div class="dd-date">${fl(selD).toUpperCase()}</div><div class="dd-type">${s.type}</div></div>
+      <div><div class="dd-date">${fl(selD).toUpperCase()}</div>${dHdr}</div>
       <button class="dd-close" onclick="selDay('${selD}')">Cerrar</button>
     </div>
-    ${mi?`<div class="dd-meta">${mi}</div>`:''}
-    ${bH?`<div class="dd-blocks">${bH}</div>`:''}
-    ${exH?`<div class="dd-ex-wrap"><div class="dd-ex-head"><span>Ejercicio</span><span>Carga</span><span>Reps</span></div>${exH}</div>`:''}
-    ${s.notes?`<div class="dd-notes">${s.notes}</div>`:''}`;
+    ${allSessHTML}`;
   el.classList.add('open');
 }
+
 
 function renderHist(){
   const cats=['Todos',...new Set(SESSIONS.map(s=>s.cat).filter(Boolean))];
